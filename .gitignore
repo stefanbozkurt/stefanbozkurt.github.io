@@ -1,9 +1,6 @@
 # Node.js
 node_modules/
 
-# Source-Ordner
-src/
-
 # npm log-Dateien
 npm-debug.log
 yarn-error.log
