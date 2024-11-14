@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+
+# Build-Ordner (z.B. dist/ für minifizierte Dateien)
+dist/
+
+# npm log-Dateien
+npm-debug.log
+yarn-error.log
+
+# macOS-Daten (falls du auf einem Mac arbeitest)
+.DS_Store
+
+# IDE/Editor-Konfigurationsdateien
+.vscode/
+.idea/
+
+# Umgebungsvariablen
+.env
+
+# Build-spezifische Dateien (optional)
+*.log
+
+# Betriebssystem-spezifische Dateien
+Thumbs.db
