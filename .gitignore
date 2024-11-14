@@ -1,8 +1,8 @@
 # Node.js
 node_modules/
 
-# Build-Ordner (z.B. dist/ für minifizierte Dateien)
-dist/
+# Source-Ordner
+src/
 
 # npm log-Dateien
 npm-debug.log
