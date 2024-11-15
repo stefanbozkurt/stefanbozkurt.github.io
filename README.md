@@ -11,6 +11,7 @@ Dieses Projekt verwendet einfache HTML-, CSS- und JavaScript-Dateien, um eine st
 - `src/` - Der Quellcodeordner, in dem alle deine ursprünglichen HTML-, CSS- und JavaScript-Dateien gespeichert sind.
 - `dist/` - Der Zielordner, der die minifizierten und optimierten Dateien enthält. Dieser Ordner wird nach jedem Build aktualisiert und dann auf GitHub Pages bereitgestellt.
 - `scripts/` - Enthält benutzerdefinierte Skripte wie `build.js` und `watch.js`, um den Build-Prozess zu automatisieren und die Dateien zu überwachen.
+- `dist/img/` - Enthält alle Bilder, die automatisch von `src/img/` synchronisiert werden, um sicherzustellen, dass alle Bilder auch im veröffentlichten Verzeichnis vorhanden sind.
 
 ## Technologien
 
@@ -24,6 +25,15 @@ Dieses Projekt verwendet einfache HTML-, CSS- und JavaScript-Dateien, um eine st
 - **Chokidar** - Zum Überwachen von Dateiänderungen (für den Watch-Modus).
 - **GitHub Pages** - Zum Hosten der Website.
 - **BrowserSync** - Zum Überwachen der Änderungen im Browser und automatischen Neuladen der Seite.
+
+## Bild-Synchronisation
+
+Ein spezielles Skript sorgt dafür, dass alle Bilder aus dem `src/img/` Ordner automatisch in den `dist/img/` Ordner kopiert werden, um sicherzustellen, dass alle Bilder auch im veröffentlichten Projekt enthalten sind. Das Skript überwacht alle Bilddateien im `src/img/` Ordner und synchronisiert sie bei jeder Änderung, Ergänzung oder Löschung mit dem Zielordner `dist/img/`.
+
+- Wenn ein Bild hinzugefügt, geändert oder gelöscht wird, wird es automatisch ins `dist/` Verzeichnis kopiert bzw. entfernt.
+- Beim Starten des Projekts werden alle bestehenden Bilder aus `src/img/` initial kopiert.
+
+Das Skript nutzt **Chokidar**, um alle Änderungen an den Bilddateien zu überwachen und in Echtzeit zu synchronisieren.
 
 ## Setup und Installation
 
@@ -46,7 +56,7 @@ Dieses Projekt verwendet einfache HTML-, CSS- und JavaScript-Dateien, um eine st
     npm run watch
     ```
 
-    Dies wird alle CSS-, JavaScript- und HTML-Dateien überwachen und die Änderungen in den `dist/` Ordner kopieren und minifizieren.
+    Dies wird alle CSS-, JavaScript- und HTML-Dateien überwachen und die Änderungen in den `dist/` Ordner kopieren und minifizieren. Ebenso werden die Bilddateien im `src/img/` Ordner synchronisiert.
 
 4. **Führe den Build-Befehl aus, um die minifizierten Dateien zu erstellen:**
 
