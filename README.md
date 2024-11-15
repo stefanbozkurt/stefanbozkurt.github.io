@@ -1,1 +1,0 @@
-# stefanbozkurt.github.io
