@@ -2,15 +2,17 @@
   "name": "stefanbozkurt.github.io",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm run minify-js && npm run minify-css && npm run copy-html",
-    "watch": "npm-run-all --parallel watch:scss watch:js watch:html",
-    "watch:scss": "sass --watch src/css/styles.scss:dist/css/styles.min.css --style compressed --no-source-map",
+    "watch": "npm-run-all --parallel watch:scss watch:js watch:html watch:img",
     "watch:js": "npx chokidar 'src/js/*.js' -c 'npm run minify-js'",
-    "watch:html": "npx chokidar 'src/index.html' -c 'npm run copy-html'",
     "minify-js": "terser src/js/*.js --compress --mangle --output dist/js/main.min.js",
-    "minify-css": "cleancss -o dist/css/styles.min.css src/css/*.css",
-    "copy-html": "copyfiles -u 1 src/index.html dist/",
-    "serve": "browser-sync start --server 'dist' --files 'dist/**/*'"
+    "watch:scss": "sass --watch src/css/styles.scss:dist/css/styles.min.css --style compressed --no-source-map",
+    "watch:html": "npx chokidar 'src/**/*.html' -c 'npm run build:html'",
+    "watch:img": "npx chokidar 'src/img/**/*' -c 'npm run copy-images'",
+    "build": "npm run build:html && npm run build:css && npm run build:js",
+    "build:html": "copyfiles -u 1 src/**/*.html dist/",
+    "build:css": "npx clean-css-cli -o dist/css/styles.min.css src/css/styles.css",
+    "build:js": "npm run minify-js",
+    "copy-images": "node scripts/copy-images.js"
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",
