@@ -23,6 +23,7 @@ Dieses Projekt verwendet einfache HTML-, CSS- und JavaScript-Dateien, um eine st
 - **Clean-CSS** - Zum Minifizieren von CSS.
 - **Chokidar** - Zum Überwachen von Dateiänderungen (für den Watch-Modus).
 - **GitHub Pages** - Zum Hosten der Website.
+- **BrowserSync** - Zum Überwachen der Änderungen im Browser und automatischen Neuladen der Seite.
 
 ## Setup und Installation
 
@@ -55,7 +56,15 @@ Dieses Projekt verwendet einfache HTML-, CSS- und JavaScript-Dateien, um eine st
 
     Dieser Befehl wird alle Dateien minifizieren und die optimierten Dateien im `dist/` Ordner ablegen.
 
-5. **Push die Änderungen in das GitHub-Repository, um die Website zu veröffentlichen.**
+5. **Starte den lokalen Webserver, um die Website anzusehen:**
+
+    ```bash
+    npm run serve
+    ```
+
+    Dies startet einen lokalen Server mit **BrowserSync**, der alle Änderungen im Browser automatisch anzeigt.
+
+6. **Push die Änderungen in das GitHub-Repository, um die Website zu veröffentlichen.**
 
     ```bash
     git add .
@@ -78,4 +87,3 @@ Wenn du zu diesem Projekt beitragen möchtest, kannst du Forken und Pull Request
 ## Lizenz
 
 Dieses Projekt steht unter der MIT-Lizenz. Siehe [LICENSE](LICENSE) für weitere Informationen.
-
