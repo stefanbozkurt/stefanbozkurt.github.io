@@ -6,61 +6,46 @@ const path = require('path');
 const srcDir = path.join(__dirname, '..', 'src');
 const distDir = path.join(__dirname, '..', 'dist');
 
-// Definiere die Quell- und Zielordner für die Bilder
-const imgSource = path.join(srcDir, 'img');
-const imgDest = path.join(distDir, 'img');
+// Hilfsfunktion zum Kopieren von Dateien
+const copyFile = (filePath) => {
+  const targetPath = filePath.replace(srcDir, distDir);
+  const targetDir = path.dirname(targetPath);
 
-// Überwache den `src`-Ordner auf Änderungen, inklusive des `img`-Ordners
+  // Sicherstellen, dass das Zielverzeichnis existiert
+  if (!fs.existsSync(targetDir)) {
+    fs.mkdirSync(targetDir, { recursive: true });
+  }
+
+  // Datei kopieren
+  try {
+    fs.copyFileSync(filePath, targetPath);
+    console.log(`${path.extname(filePath).toUpperCase()} kopiert: ${filePath}`);
+  } catch (err) {
+    console.error(`Fehler beim Kopieren der Datei ${filePath}: ${err.message}`);
+  }
+};
+
+// Überwache den `src`-Ordner auf Änderungen, einschließlich HTML-, CSS- und JS-Dateien
 const watcher = chokidar.watch([
   path.join(srcDir, '**/*.html'),
   path.join(srcDir, 'css/**/*.css'),
-  path.join(srcDir, 'js/**/*.js'),
-  path.join(srcDir, 'img/**/*')  // Überwacht alle Bilddateien
-]);
+  path.join(srcDir, 'js/**/*.js')
+], { persistent: true });
 
 // Reagiert auf Änderungen
 watcher.on('change', (filePath) => {
   console.log(`Datei geändert: ${filePath}`);
 
-  // Wenn eine HTML-Datei geändert wurde, kopiere sie ins dist-Verzeichnis
-  if (filePath.endsWith('.html')) {
-    const targetPath = filePath.replace(srcDir, distDir);
-    fs.copyFileSync(filePath, targetPath);
-    console.log(`HTML kopiert: ${filePath}`);
-  }
-
-  // Wenn eine CSS-Datei geändert wurde, kopiere sie ins dist-Verzeichnis
-  if (filePath.endsWith('.css')) {
-    const targetPath = filePath.replace(srcDir, distDir);
-    fs.copyFileSync(filePath, targetPath);
-    console.log(`CSS kopiert: ${filePath}`);
-  }
-
-  // Wenn eine JavaScript-Datei geändert wurde, kopiere sie ins dist-Verzeichnis
-  if (filePath.endsWith('.js')) {
-    const targetPath = filePath.replace(srcDir, distDir);
-    fs.copyFileSync(filePath, targetPath);
-    console.log(`JS kopiert: ${filePath}`);
-  }
-
-  // Wenn eine Bild-Datei geändert oder hinzugefügt wurde, kopiere sie ins dist-Verzeichnis
-  if (filePath.startsWith(imgSource)) {
-    const targetPath = filePath.replace(srcDir, distDir);
-    fs.copyFileSync(filePath, targetPath);
-    console.log(`Bild kopiert: ${filePath}`);
-  }
+  // Wenn eine Datei geändert wurde, kopiere sie ins dist-Verzeichnis
+  copyFile(filePath);
 });
 
 // Reagiert auf das Hinzufügen neuer Dateien
 watcher.on('add', (filePath) => {
   console.log(`Neue Datei hinzugefügt: ${filePath}`);
-  
-  // Wenn eine Bild-Datei hinzugefügt wurde, kopiere sie ins dist-Verzeichnis
-  if (filePath.startsWith(imgSource)) {
-    const targetPath = filePath.replace(srcDir, distDir);
-    fs.copyFileSync(filePath, targetPath);
-    console.log(`Neues Bild kopiert: ${filePath}`);
-  }
+
+  // Wenn eine neue Datei hinzugefügt wurde, kopiere sie ins dist-Verzeichnis
+  copyFile(filePath);
 });
 
-console.log('Überwache Dateien...');
+console.log('Überwache HTML, CSS und JS Dateien...');

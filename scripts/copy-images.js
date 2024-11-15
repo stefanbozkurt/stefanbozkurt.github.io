@@ -10,32 +10,21 @@ const distDir = path.join(__dirname, '..', 'dist');
 const imgSource = path.join(srcDir, 'img');
 const imgDest = path.join(distDir, 'img');
 
-// Stelle sicher, dass der Zielordner existiert
+// Stelle sicher, dass der Zielordner existiert (nur einmal zu Beginn)
 if (!fs.existsSync(imgDest)) {
   fs.mkdirSync(imgDest, { recursive: true });
 }
 
-// Überwache den `src`-Ordner auf Änderungen, einschließlich Bilder
-const watcher = chokidar.watch([
-  path.join(srcDir, '**/*.html'),
-  path.join(srcDir, 'css/**/*.css'),
-  path.join(srcDir, 'js/**/*.js'),
-  path.join(srcDir, 'img/**/*') // Hier überwachen wir jetzt auch den `img`-Ordner
-]);
-
-// Funktion zum Kopieren von Bilddateien
-const copyImage = (filePath) => {
+// Funktion zum Kopieren von Bilddateien (asynchron)
+const copyImage = async (filePath) => {
   const targetPath = filePath.replace(srcDir, distDir);
   const targetDir = path.dirname(targetPath);
 
   // Sicherstellen, dass das Zielverzeichnis existiert
-  if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir, { recursive: true });
-  }
-
-  // Datei kopieren
   try {
-    fs.copyFileSync(filePath, targetPath);
+    await fs.promises.mkdir(targetDir, { recursive: true });
+    // Datei kopieren
+    await fs.promises.copyFile(filePath, targetPath);
     console.log(`Bild kopiert: ${filePath} -> ${targetPath}`);
   } catch (err) {
     console.error(`Fehler beim Kopieren des Bildes: ${err.message}`);
@@ -43,53 +32,62 @@ const copyImage = (filePath) => {
 };
 
 // Wenn eine Datei geändert wurde
-watcher.on('change', (filePath) => {
+const handleChange = (filePath) => {
   console.log(`Datei geändert: ${filePath}`);
-
   if (filePath.startsWith(imgSource)) {
-    // Wenn eine Bild-Datei geändert wurde, kopiere sie ins dist-Verzeichnis
     copyImage(filePath);
   }
-});
-
-// Wenn eine Datei hinzugefügt wird
-watcher.on('add', (filePath) => {
-  console.log(`Neue Datei hinzugefügt: ${filePath}`);
-  
-  if (filePath.startsWith(imgSource)) {
-    // Wenn eine neue Bild-Datei hinzugefügt wurde, kopiere sie ins dist-Verzeichnis
-    copyImage(filePath);
-  }
-});
-
-// Wenn eine Datei entfernt wurde
-watcher.on('unlink', (filePath) => {
-  console.log(`Datei entfernt: ${filePath}`);
-  
-  if (filePath.startsWith(imgSource)) {
-    // Wenn eine Bild-Datei entfernt wurde, entferne sie auch aus dist
-    const targetPath = filePath.replace(srcDir, distDir);
-    try {
-      fs.unlinkSync(targetPath);
-      console.log(`Bild entfernt: ${targetPath}`);
-    } catch (err) {
-      console.error(`Fehler beim Entfernen des Bildes: ${err.message}`);
-    }
-  }
-});
-
-// Initiale Übertragung von bestehenden Bilddateien
-const initialCopyImages = () => {
-  const files = fs.readdirSync(imgSource);
-  files.forEach((file) => {
-    const filePath = path.join(imgSource, file);
-    if (fs.lstatSync(filePath).isFile()) {
-      copyImage(filePath);
-    }
-  });
 };
 
-// Starte die initiale Kopie für alle Bilder im `src/img/` Ordner
-initialCopyImages();
+// Wenn eine Datei hinzugefügt wird
+const handleAdd = (filePath) => {
+  console.log(`Neue Datei hinzugefügt: ${filePath}`);
+  if (filePath.startsWith(imgSource)) {
+    copyImage(filePath);
+  }
+};
 
-console.log('Überwache Bilddateien...');
+// Wenn eine Datei entfernt wurde
+const handleUnlink = (filePath) => {
+  console.log(`Datei entfernt: ${filePath}`);
+  if (filePath.startsWith(imgSource)) {
+    const targetPath = filePath.replace(srcDir, distDir);
+    fs.promises.unlink(targetPath)
+      .then(() => {
+        console.log(`Bild entfernt: ${targetPath}`);
+      })
+      .catch((err) => {
+        console.error(`Fehler beim Entfernen des Bildes: ${err.message}`);
+      });
+  }
+};
+
+// Initiale Übertragung von bestehenden Bilddateien
+const initialCopyImages = async () => {
+  try {
+    const files = await fs.promises.readdir(imgSource);
+    for (const file of files) {
+      const filePath = path.join(imgSource, file);
+      const stat = await fs.promises.lstat(filePath);
+      if (stat.isFile()) {
+        await copyImage(filePath);
+      }
+    }
+  } catch (err) {
+    console.error(`Fehler bei der initialen Kopie der Bilder: ${err.message}`);
+  }
+};
+
+// Überwache den `img`-Ordner auf Änderungen
+const watcher = chokidar.watch(path.join(imgSource, '**/*'), { persistent: true });
+
+// Ereignisse für Dateiänderungen
+watcher.on('change', handleChange);
+watcher.on('add', handleAdd);
+watcher.on('unlink', handleUnlink);
+
+// Starte die initiale Kopie für alle Bilder im `src/img/` Ordner
+initialCopyImages().then(() => {
+  console.log('Initiale Bildkopie abgeschlossen. Überwache Bilddateien...');
+});
+
