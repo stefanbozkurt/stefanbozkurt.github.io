@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node scripts/build.js",
-    "watch": "node scripts/watch.js",
-    "minify-js": "terser src/js/*.js --compress --mangle --output dist/js/main.min.js",
-    "minify-css": "cleancss -o dist/css/styles.min.css src/css/*.css"
+    "build": "npm run build:scss",
+    "build:scss": "sass src/css/styles.scss dist/css/styles.min.css --style compressed --no-source-map",
+    "watch": "npm-run-all --parallel watch:scss watch:js",
+    "watch:scss": "sass --watch src/css/styles.scss:dist/css/styles.min.css --style compressed --no-source-map",
+    "watch:js": "chokidar 'src/js/*.js' -c 'npm run minify-js'",
+    "minify-js": "terser src/js/*.js --compress --mangle --output dist/js/main.min.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +18,8 @@
     "chokidar": "^4.0.1",
     "clean-css-cli": "^5.6.3",
     "copyfiles": "^2.4.1",
-    "terser": "^5.36.0"
+    "terser": "^5.36.0",
+    "sass": "^1.57.0",
+    "npm-run-all": "^4.1.5"
   }
 }
