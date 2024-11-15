@@ -1,26 +1,42 @@
 const chokidar = require('chokidar');
-const { exec } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
 
-// Zu überwachende Dateien/Ordner
-const watcher = chokidar.watch('./src', {
-  ignored: /(^|[\/\\])\../, // Ignoriere versteckte Dateien
-  persistent: true,
-});
+// Quelle und Ziel definieren
+const srcDir = path.join(__dirname, '../src');
+const distDir = path.join(__dirname, '../dist');
 
-// Event-Handler für Änderungen
-watcher.on('change', (path) => {
-  console.log(`File ${path} has been changed. Rebuilding...`);
-  exec('npm run build', (err, stdout, stderr) => {
-    if (err) {
-      console.error(`Error: ${err.message}`);
-      return;
-    }
-    if (stderr) {
-      console.error(`Stderr: ${stderr}`);
-      return;
-    }
-    console.log(`Build output:\n${stdout}`);
+// Kopiere eine Datei vom src-Ordner zum dist-Ordner
+function copyFile(srcPath, destPath) {
+  // Überprüfen, ob die Datei existiert, und dann kopieren
+  if (fs.existsSync(srcPath)) {
+    fs.copyFileSync(srcPath, destPath);
+    //console.log(`Kopiert: ${srcPath} nach ${destPath}`);
+  } else {
+    console.error(`Fehler: Datei nicht gefunden - ${srcPath}`);
+  }
+}
+
+// Beobachte Änderungen an der index.html-Datei
+chokidar.watch(path.join(srcDir, 'index.html'))
+  .on('change', (filePath) => {
+    console.log(`Änderung festgestellt an ${filePath}`);
+    copyFile(path.join(srcDir, 'index.html'), path.join(distDir, 'index.html'));
   });
-});
 
-console.log('Watching for file changes...');
+// Beobachte Änderungen an den CSS-Dateien
+chokidar.watch(path.join(srcDir, 'css/**/*.css'))
+  .on('change', (filePath) => {
+    console.log(`Änderung festgestellt an CSS-Datei: ${filePath}`);
+    execSync('npm run minify-css'); // Minifiziere CSS
+    copyFile(path.join(srcDir, filePath), path.join(distDir, path.basename(filePath))); // Nur Datei kopieren, nicht den gesamten Pfad
+  });
+
+// Beobachte Änderungen an den JS-Dateien
+chokidar.watch(path.join(srcDir, 'js/**/*.js'))
+  .on('change', (filePath) => {
+    console.log(`Änderung festgestellt an JS-Datei: ${filePath}`);
+    execSync('npm run minify-js'); // Minifiziere JS
+    copyFile(path.join(srcDir, filePath), path.join(distDir, path.basename(filePath))); // Nur Datei kopieren, nicht den gesamten Pfad
+  });
