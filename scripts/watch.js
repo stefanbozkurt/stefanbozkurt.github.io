@@ -7,7 +7,7 @@ const { exec } = require('child_process');
 const srcDir = path.join(__dirname, '../src');
 const distDir = path.join(__dirname, '../dist');
 
-// Funktion, um nur die index.html in den dist-Ordner zu kopieren
+// Funktion zum Kopieren der index.html in den dist-Ordner
 function copyIndexHTML() {
   const srcFile = path.join(srcDir, 'index.html'); // Nur die index.html-Datei
   const destFile = path.join(distDir, 'index.html'); // Zielort im dist-Ordner
@@ -22,11 +22,14 @@ function copyIndexHTML() {
 }
 
 // Watch für Änderungen an der index.html
-chokidar.watch(path.join(srcDir, 'index.html')).on('change', copyIndexHTML);
+chokidar.watch(path.join(srcDir, 'index.html')).on('change', (event, path) => {
+  console.log(`index.html wurde geändert: ${path}`);
+  copyIndexHTML(); // Kopiere die index.html, wenn sie geändert wurde
+});
 
 // Watch für JS-Dateien und Minifizierung
 chokidar.watch(path.join(srcDir, 'js/*.js')).on('change', (event, path) => {
-  console.log(`Datei geändert: ${path}`);
+  console.log(`JavaScript-Datei geändert: ${path}`);
   exec('npm run minify-js', (err, stdout, stderr) => {
     if (err) {
       console.error('Fehler beim Minifizieren von JS:', err);
@@ -38,7 +41,7 @@ chokidar.watch(path.join(srcDir, 'js/*.js')).on('change', (event, path) => {
 
 // Watch für CSS-Dateien und Minifizierung
 chokidar.watch(path.join(srcDir, 'css/*.css')).on('change', (event, path) => {
-  console.log(`Datei geändert: ${path}`);
+  console.log(`CSS-Datei geändert: ${path}`);
   exec('npm run minify-css', (err, stdout, stderr) => {
     if (err) {
       console.error('Fehler beim Minifizieren von CSS:', err);
