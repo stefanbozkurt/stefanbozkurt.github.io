@@ -15,7 +15,7 @@ body {
 }
 
 /* tablet breakpoint */
-@media (min-width:768px) {
+@media (min-width:750px) {
     .responsive-two-column-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
