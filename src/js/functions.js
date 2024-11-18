@@ -1,1 +1,1 @@
-console.log('functions js loaded...sdvsdv');
+console.log('functions js loaded.');

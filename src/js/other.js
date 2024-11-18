@@ -1,1 +1,1 @@
-console.log('otherjs');
+console.log('otherjs is loaded.');
