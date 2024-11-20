@@ -1,0 +1,29 @@
+body {
+    font-family: 'Open Sans', 'system-ui', 'Trebuchet MS', 'Arial', 'Helvetica', 'Verdana';
+    background: var(--main-background-color);
+    color: var(--main-text-color);
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 140px;
+    background: var(--main-background-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-text-color);
+
+    &:hover {
+        color: var(--main-text-color);
+    }
+}
+
+h1 {
+    font-size: clamp(2.5rem, -0.875rem + 11.333vw, 9rem);
+    line-height: 1.2;
+    margin: 3rem 0 0 -5px;
+    padding: 0;
+}

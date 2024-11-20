@@ -1,1 +1,7 @@
-@use 'layout'; 
+@use 'global/variables';
+@use 'global/reset';
+@use 'global/layout';
+@use 'global/header.scss';
+@use 'global/mixins';
+
+@use 'modules/navigation';
