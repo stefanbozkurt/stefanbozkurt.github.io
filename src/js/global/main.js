@@ -27,5 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hero-Sektion laden
     loadSection('../modules/hero.html', 'content');
 
+    // Kompetenz-Sektion laden
+    loadSection('../modules/competence.html', 'content');
+
+    // Experience-Sektion laden
+    loadSection('../modules/experience.html', 'content');
+
 });
 

@@ -1,0 +1,14 @@
+.competence .col-33 .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    background: #ecebeb;
+    hyphens: auto;
+    word-wrap: break-word;
+    width: 100%;
+}
+.competence img {
+    margin: 0 auto;
+}
+
