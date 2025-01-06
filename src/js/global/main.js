@@ -1,4 +1,6 @@
-console.log('mainjs is loaded.');
+import { setupHeader } from './modules/header.js'; // Header-Funktionalität importieren
+import { setupAccordion } from './modules/accordion.js'; // Accordion-Funktionalität importieren
+import { setupProjects } from './modules/projects.js'; // Projekte-Funktionalität importieren
 
 document.addEventListener('DOMContentLoaded', () => {
     async function loadSection(filePath, targetElementId) {
@@ -21,18 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Navigation laden
-    loadSection('../modules/navigation.html', 'navigation');
+    // Alle Sektionen laden
+    async function loadAllSections() {
+        await Promise.all([
+            loadSection('../modules/navigation.html', 'navigation'),
+            loadSection('../modules/hero.html', 'content'),
+            loadSection('../modules/competence.html', 'content'),
+            loadSection('../modules/experience.html', 'content'),
+            loadSection('../modules/know-how.html', 'content'),
+            loadSection('../modules/faq.html', 'content')
+        ]);
 
-    // Hero-Sektion laden
-    loadSection('../modules/hero.html', 'content');
+        // Accordion-Funktionalität nach dem Laden aller Sektionen aktivieren
+        setupHeader();
+        
+        // Accordion-Funktionalität nach dem Laden aller Sektionen aktivieren
+        setupAccordion();
 
-    // Kompetenz-Sektion laden
-    loadSection('../modules/competence.html', 'content');
+        // Projekte Funktionalität nach dem Laden aller Sektionen aktivieren
+        setupProjects();
+    }
 
-    // Experience-Sektion laden
-    loadSection('../modules/experience.html', 'content');
-
+    // Alle Sektionen laden und dann Tabs und Akkordeons aktivieren
+    loadAllSections();
 });
-
-

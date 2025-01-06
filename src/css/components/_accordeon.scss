@@ -1,0 +1,40 @@
+.accordion-collapse {
+    display: none;
+    overflow: hidden;
+}
+
+.accordion-collapse.show {
+    display: block;
+}
+
+.accordion-header {
+    margin: 0;
+    padding: 0;
+}
+
+.accordion-button {
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    font-size: 1.17rem;
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    border: none;
+    padding: 20px 0 20px 20px;
+}
+
+.accordion-body {
+    background-color: var(--background-color);
+    color: var( --text-color);
+    padding: 0px 0 20px 20px;
+}
+
+.accordion-icon {
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    font-size: 1.2em;
+}

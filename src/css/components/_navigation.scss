@@ -1,0 +1,129 @@
+/* Menu Link Styles */
+.menu-link {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+    display: inline;
+    margin: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 9999;
+}
+
+.menu-link .bar1,
+.menu-link .bar2,
+.menu-link .bar3 {
+    margin-top: 3px;
+    background: var(--primary-color);
+    width: 32px;
+    height: 4px;
+    position: absolute;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+}
+
+.menu-link .bar2 {
+    margin-top: 13px;
+}
+
+.menu-link .bar3 {
+    margin-top: 23px;
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+}
+
+/* Navigation Menu Styles */
+#menu {
+    display: none;
+}
+
+nav[role=navigation] {
+    clear: right;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+nav[role=navigation] ul {
+    margin: 0;
+    padding: 0;
+    gap: 1em;
+    align-items: center;
+    list-style: none;
+}
+
+nav[role=navigation] li a {
+    display: block;
+    padding: 2em 0.35em 0.8em 0.35em;
+    font-size: 1.3em;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+nav[role=navigation] li a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media screen and (min-width: 1024px) {
+    #menu {
+        display: block;
+    }
+
+    .menu-link {
+        display: none;
+        position: relative;
+        z-index: 9999;
+    }
+
+    nav[role=navigation] ul {
+        margin: 0 0 0 -0.25em;
+        border: 0;
+        justify-content: flex-end;
+    }
+
+    nav[role=navigation] li {
+        display: inline-block;
+        margin: 0;
+    }
+
+    nav[role=navigation] li a {
+        border: 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    nav[role=navigation] ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    nav[role=navigation] ul li {
+        margin: 0;
+    }
+
+    nav[role=navigation] {
+        display: none;
+        background: var(--neutral-light);
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 100%;
+        max-width: 360px;
+        z-index: 999;
+    }
+
+    nav[role=navigation].active {
+        display: block;
+    }
+}
+
+
+  

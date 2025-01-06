@@ -1,0 +1,21 @@
+.tag-list {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 16px 0 24px -10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Abstand zwischen den Tags */
+}
+
+.tag-list li {
+    background-color: var(--main-tag-background-color);
+    color: var(--main-link-color);
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}

@@ -1,11 +1,22 @@
-@use 'global/fonts';
-@use 'global/variables';
-@use 'global/reset';
-@use 'global/layout';
-@use 'global/header.scss';
-@use 'global/mixins';
+@use 'base/variables';
+@use 'base/layout';
+@use 'base/typo';
+@use 'base/reset';
 
-@use 'modules/navigation';
+@use 'components/preloader';
+@use 'components/navigation';
+@use 'components/tag-list';
+@use 'components/accordeon';
+@use 'components/timeline';
+@use 'components/layout-switch';
+
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/grid';
+
 @use 'modules/hero';
 @use 'modules/competence';
 @use 'modules/experience';
+@use 'modules/know-how';
+
+@use 'utils/mixins';

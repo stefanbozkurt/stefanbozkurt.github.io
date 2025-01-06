@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+export function setupHeader() {
     // Warte, bis das Menü aus der externen Datei geladen wurde
     const navigationContainer = document.querySelector('#navigation');
 
@@ -24,23 +24,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const bar1 = document.querySelector('.bar1');
         const bar2 = document.querySelector('.bar2');
         const bar3 = document.querySelector('.bar3');
+        const themeToggle = document.getElementById('theme-toggle'); // Hier den Toggle finden
 
         // Überprüfen, ob alle benötigten Elemente vorhanden sind
-        if (!menuLink || !menu || !bar1 || !bar2 || !bar3) {
-            console.error('Ein oder mehrere Menü-Elemente konnten nicht gefunden werden.');
+        if (!menuLink || !menu || !bar1 || !bar2 || !bar3 || !themeToggle) {
+            console.error('Ein oder mehrere Menü-Elemente oder der Theme-Toggle-Button konnten nicht gefunden werden.');
             return;
         }
 
         // Funktion zum Ein- und Ausklappen des Menüs
         menuLink.addEventListener('click', (e) => {
-
             // Wenn das Menü geöffnet ist, blockiere das Scrollen
             if (menuLink.classList.contains('active')) {
                 body.style.overflow = 'auto';  // Scrollen erlauben
             } else {
                 body.style.overflow = 'hidden';  // Scrollen blockieren
             }
-
 
             e.preventDefault(); // Verhindern der Standardaktion (z.B. Scrollen)
 
@@ -59,6 +58,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 bar1.style.transform = 'rotate(0deg) translate(0, 0)';
                 bar2.style.opacity = '1';
                 bar3.style.transform = 'rotate(0deg) translate(0, 0)';
+            }
+        });
+
+        // Event Listener für den Theme-Wechsel
+        
+        themeToggle.addEventListener('change', function () {
+            const isDark = this.checked; // Überprüft, ob das Theme auf "dark" gesetzt werden soll
+        
+            // Toggle für den Body
+            document.body.classList.toggle('dark-theme', isDark);
+        
+            // Toggle für die Header-Navigation
+            const headerNav = document.querySelector('.header-nav');
+            if (headerNav) {
+                headerNav.classList.toggle('dark-theme', isDark);
             }
         });
 
@@ -106,4 +120,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-});
+}
