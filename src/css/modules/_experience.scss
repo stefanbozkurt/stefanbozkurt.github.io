@@ -30,7 +30,7 @@ a.toggle-projects:hover {
 
 .dark-theme .project {
     background: var(----neutral-dark);
-    color: var(--primary-color);
+    color: var(--neutral-light);
 }
 
 .project.active {
@@ -47,25 +47,26 @@ a.toggle-projects:hover {
 
 .tab-projects-container .project-details {
     position: relative;
-    width: 100%;
-    display: flex;
+    width: calc(100% - 30px);
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
 }
 
-@media screen and (min-width: 769px) {
-    .tab-projects-container .project-details {
-        height: 450px;
-    }
-}
-
 .tab-projects-container .project-details img {
-    position: absolute;
-    top: 0;
+    position: relative; /* Entfernt absolute Positionierung */
     width: 100%;
     max-width: 100%;
     height: auto;
+    display: block; /* Verhindert, dass das Bild inline mit Text läuft */
+}
+
+/* Beschreibungstext unter dem Bild */
+.tab-projects-container .project-details .project-description {
+    margin-top: 20px; /* Abstand zum Bild */
+    font-size: 14px;
+    color: #555;
+    text-align: left; /* Optional: Justiert den Text links */
 }
 
 /* Mobile Ansicht (< 768px) */

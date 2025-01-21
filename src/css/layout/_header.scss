@@ -1,18 +1,8 @@
 .header-nav {
-    max-width: 1200px;
+    max-width: 80%;
     margin: 0 auto;
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
     width: 100%;
     box-sizing: border-box;
-    background-color: var(--background-color);
     // On Scroll animation
     -webkit-transition: -webkit-transform 0.7s .3s ease;
     -moz-transition:       -moz-transform 0.7s .3s ease;
@@ -22,37 +12,16 @@
     // Stop animation flicker
     -webkit-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);
-
-    nav {
-        margin-left: auto;
-        margin-right: 20px;
-    }
-
-    @media screen and (max-width: 1024px) {
-        nav {
-            margin-right: 0;
-        }
-    }
 }
 
-.header-nav.dark-theme {
+.dark-theme .header-nav {
     background-color: var(--neutral-dark);
     color: var(--neutral-light);
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
 .brand {
-    display: flex;
-    align-items: center;
     font-size: 2rem;
     font-weight: bold;
-    padding-left: 20px;
 }
 
 .brand a {
@@ -60,6 +29,8 @@
     color: var(--main-text-color);
     white-space: nowrap;
     text-decoration: none;
+    padding-top: 10px;
+    display: inline-block;
 }
 
 #header-nav.hide-nav-bar {

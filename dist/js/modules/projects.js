@@ -75,11 +75,11 @@ export function setupProjects() {
                 : project.nextElementSibling; // Mobile
 
         const content = project.getAttribute('data-tab');
+        const description = project.getAttribute('data-description'); // Beschreibung extrahieren
 
         if (content && projectDetails) {
             // Zeige den Preloader
-            projectDetails.innerHTML = '<div class="preloader" style="width: 40px; height: 40px; border: 4px solid #ccc; border-top-color: #333; border-radius: 50%; animation: spin 1s linear infinite;"></div>';
-            projectDetails.style.display = 'flex';
+            projectDetails.innerHTML = '<div class="preloader"></div>';
 
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = content;
@@ -91,9 +91,25 @@ export function setupProjects() {
 
                 img.onload = () => {
                     projectDetails.innerHTML = content;
+
+                    // Hier wird der Beschreibungstext hinzugefügt, wenn vorhanden
+                    if (description) {
+                        const descriptionElement = document.createElement('p');
+                        descriptionElement.classList.add('project-description');
+                        descriptionElement.textContent = description;
+                        projectDetails.appendChild(descriptionElement);
+                    }
                 };
             } else {
                 projectDetails.innerHTML = content;
+
+                // Hier wird der Beschreibungstext hinzugefügt, wenn vorhanden
+                if (description) {
+                    const descriptionElement = document.createElement('p');
+                    descriptionElement.classList.add('project-description');
+                    descriptionElement.textContent = description;
+                    projectDetails.appendChild(descriptionElement);
+                }
             }
         }
 
@@ -108,6 +124,7 @@ export function setupProjects() {
             }
         }
     }
+
 
     // Funktion zur Aktualisierung der Tags in der jeweiligen Liste
     function updateTags(tags, tagList) {

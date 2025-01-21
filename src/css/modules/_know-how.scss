@@ -1,4 +1,7 @@
 #know-how {
+    h3 {
+        margin: 0 0 20px 0px;
+    }
     p {
         margin-bottom: 20px;
     }
@@ -6,5 +9,12 @@
     abbr {
         font-weight: bold;
         cursor: help;
+    }
+    ul {
+        margin: 0 0 40px 30px;
+    
+        li {
+            font-size: 1.2rem;
+        }
     }
 } 

@@ -16,9 +16,8 @@ body.dark-theme {
 
 main {
     width: 100%;
-    max-width: 1160px;
+    max-width: 80%;
     margin: 0 auto;
-    padding-top: 100px;
     background: var(--main-background-color);
 }
 
@@ -28,6 +27,16 @@ a {
 
     &:hover {
         color: var(--primary-color);
+        text-decoration: underline;
+    }
+}
+
+.dark-theme a {
+    color: var(--neutral-light);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--neutral-light);
         text-decoration: underline;
     }
 }
@@ -67,4 +76,5 @@ ul {
 
 .intro {
     margin: 0 0 20px 0;
+    font-size: 1.2rem;
 }
