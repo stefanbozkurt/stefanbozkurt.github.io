@@ -6,7 +6,6 @@
 @use 'components/preloader';
 @use 'components/navigation';
 @use 'components/tag-list';
-@use 'components/accordeon';
 @use 'components/timeline';
 @use 'components/switch-button';
 
@@ -18,5 +17,6 @@
 @use 'modules/competence';
 @use 'modules/experience';
 @use 'modules/know-how';
+@use 'modules/faq';
 
 @use 'utils/mixins';

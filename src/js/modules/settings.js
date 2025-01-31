@@ -1,9 +1,13 @@
-
 // Funktion zur Aktivierung des Übersetzungsvorgangs beim Klick
 export async function setupSettings() {
-
     const themeSwitch = document.querySelector('.toggle__checkbox');
     const body = document.body;
+
+    // Falls das Element nicht gefunden wurde, beende die Funktion
+    if (!themeSwitch) {
+        console.error('Das Theme-Switch-Element wurde nicht gefunden!');
+        return; // Beende die Funktion, wenn das Element nicht vorhanden ist
+    }
 
     // Funktion zum Anwenden des Themes basierend auf dem Wert von localStorage oder der Checkbox
     function applyTheme(isInitialLoad = false) {
@@ -124,5 +128,4 @@ export async function setupSettings() {
         await translateContent('en');
         document.documentElement.lang = 'en'; // Optional: Sprache für SEO ändern
     }
-    
 }

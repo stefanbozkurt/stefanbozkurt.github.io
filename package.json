@@ -16,8 +16,7 @@
 
     "build:js": "npm run minify-js",
     "build:css": "npx clean-css-cli -o dist/css/styles.min.css src/css/styles.css",
-    "build:html": "npx copyfiles -u 1 src/**/*.html dist/",
-
+    "build:html": "npx copyfiles -u 1 src/**/*.html src/index.html dist/",
     "serve": "http-server dist -p 8080"
   },
   "devDependencies": {

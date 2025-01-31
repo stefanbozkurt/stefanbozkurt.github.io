@@ -1,4 +1,18 @@
 #know-how {
+
+    .know-howContainer {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .col-50 {
+        margin: 0 0 40px 0;
+        gap: 40px;
+        .col {
+            padding: 40px;
+            background: var(--white);
+        }
+    }
     h3 {
         margin: 0 0 20px 0px;
     }
@@ -17,4 +31,16 @@
             font-size: 1.2rem;
         }
     }
-} 
+}
+
+.dark-theme {
+    #know-how {
+        .col-50 {
+            .col {
+                background: var(--neutral-dark);
+                color: var(--neutral-light);
+                border: 1px solid var(--neutral-light);
+            }
+        }
+    }
+}

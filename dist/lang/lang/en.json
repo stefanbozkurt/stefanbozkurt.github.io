@@ -1,0 +1,9 @@
+{
+    "greeting": "Hello!",
+    "intro": "I am Stefan, a Senior Frontend Developer with over 20 years of experience in frontend development. My focus is on WordPress, HubSpot CMS, and the development of A/B tests to drive data-driven optimizations. <br><br> I am based in Berlin and currently work at mediaworx berlin GmbH as part of the MAI Group, where I bring my passion for creative coding and modern web design.",
+    "competence": "Whether it's the development of flexible WordPress websites, the implementation of customised HubSpot modules or optimisation through A/B testing - my work combines clean code, compelling content and measurable results.",
+    "competence-wordpress-headline": "WordPress Theme Development",
+    "competence-hubspot-headline": "Hubspot CMS Development",
+    "competence-abtesting-headline": "A/B Testing & Conversion Rate Optimization (CRO)",
+    "Competence-wordpress": "<li><strong>Responsive design:</strong> Development of FSE themes that are optimised for display on all devices.</li><li><strong>Clean, secure coding:</strong> Application of best practices for robust and secure code.</li><li><strong>Optimisation of loading times:</strong> Performance optimisation to improve user experience and SEO ranking.</li>"
+}

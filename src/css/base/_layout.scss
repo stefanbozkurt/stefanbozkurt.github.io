@@ -1,80 +1,75 @@
 html {
     scroll-behavior: smooth;
-}
-
-body {
+  }
+  
+  body {
     font-family: 'Roboto Mono', monospace;
     background: var(--background-color);
     color: var(--text-color);
-    margin: 0 20px;
-}
-
-body.dark-theme {
-    background: var(--neutral-dark);
-    color: var(--neutral-light);
-}
-
-main {
-    width: 100%;
-    max-width: 80%;
-    margin: 0 auto;
-    background: var(--main-background-color);
-}
-
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-
-    &:hover {
+  
+    &.dark-theme {
+      background: var(--neutral-dark);
+      color: var(--neutral-light);
+  
+      a {
+        color: var(--neutral-light);
+        text-decoration: none;
+  
+        &:hover {
+          color: var(--neutral-light);
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+  
+      &:hover {
         color: var(--primary-color);
         text-decoration: underline;
+      }
     }
-}
-
-.dark-theme a {
-    color: var(--neutral-light);
-    text-decoration: none;
-
-    &:hover {
-        color: var(--neutral-light);
-        text-decoration: underline;
+  
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 2rem;
     }
-}
-
-h2, h3, h4, h5, h6 {
-    line-height: 2rem;
-}
-
-h1 {
-    font-size: clamp(2.5rem, -0.875rem + 7.333vw, 7rem);
-    margin: 2rem 0 5rem;
-    padding: 0;
-}
-
-h2 {
-    margin: 0 0 1.2rem;
-    padding: 0;
-}
-
-section {
-    padding: 40px 0;
-}
-
-ul {
-    margin: 20px;
-    padding: 0;
-    list-style-type: square;
-
-    li {
+  
+    h1 {
+      font-size: clamp(2.5rem, -0.875rem + 7.333vw, 7rem);
+      margin: 4rem 0 5rem;
+      padding: 0;
+      line-height: 9rem;
+      display: inline-block;
+    }
+  
+    h2 {
+      margin: 0 0 1.2rem;
+      padding: 0;
+    }
+  
+    section {
+      padding: 40px 0;
+    }
+  
+    ul {
+      margin: 20px;
+      padding: 0;
+      list-style-type: square;
+  
+      li {
         margin: 0 0 20px 0;
-    }   
-    
-    li::marker {
-        color: cadetblue;
+  
+        &::marker {
+          color: cadetblue;
+        }
+      }
     }
-}
-
-.intro {
-    margin: 0 0 20px 0;
-    font-size: 1.2rem;
-}
+  
+    .intro {
+      margin: 0 0 40px 0;
+      font-size: 1.2rem;
+    }
+  }
+  
