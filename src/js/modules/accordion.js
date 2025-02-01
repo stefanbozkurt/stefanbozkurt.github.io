@@ -1,4 +1,4 @@
-export function setupAccordion() {
+function setupAccordion() {
   const buttons = document.querySelectorAll('.accordion-content-button');
   buttons.forEach(button => {
       button.addEventListener('click', () => {

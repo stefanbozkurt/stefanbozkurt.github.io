@@ -1,4 +1,4 @@
-export function setupHeader() {
+
     const menuLink = document.querySelector('.menu-link');
     const menu = document.getElementById('menu');
     const bar1 = document.querySelector('.bar1');
@@ -11,7 +11,6 @@ export function setupHeader() {
 
     if (!menu || !menuLink || !settingsToggle || !settings) {
         console.error('Ein oder mehrere erforderliche Elemente wurden nicht gefunden!');
-        return;
     }
 
     // Funktion zum Ein- und Ausklappen des Navigationsmenüs
@@ -90,4 +89,4 @@ export function setupHeader() {
             }
         }
     });
-}
+

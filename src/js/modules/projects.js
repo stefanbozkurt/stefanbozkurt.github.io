@@ -1,214 +1,98 @@
-export function setupProjects() {
-    const toggleLinks = document.querySelectorAll('.toggle-projects');
-    const containers = document.querySelectorAll('.projects-container');
+document.querySelectorAll('.toggle-projects').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        // Verhindern des Standard-Verhaltens des Links (z. B. scrollen)
+        event.preventDefault();
 
-    // Funktion zum Umschalten von Containern
-    function toggleContainer(targetId, toggleLink) {
-        containers.forEach(container => {
-            const projects = container.querySelectorAll('.project');
-            const tabProjectsContainer = container.querySelector('.tab-projects-container');
-            const projectDetails = tabProjectsContainer?.querySelector('.project-details');
-            const tagList = container.closest('.timeline-content').querySelector('.tag-list');
-    
-            if (container.id === targetId) {
-                const isVisible = container.style.display === 'flex';
-                container.style.display = isVisible ? 'none' : 'flex';
-    
-                // Ändere das Plus/Minus vor dem Titel
-                const titleElement = toggleLink.querySelector('.timeline-title');
-                if (titleElement) {
-                    titleElement.textContent = `${isVisible ? '+' : '-'} ${titleElement.textContent.slice(2)}`;
-                }
-    
-                if (isVisible) {
-                    // Tab-Container und Tag-Liste ausblenden
-                    if (tabProjectsContainer) {
-                        tabProjectsContainer.style.display = 'none';
-                        if (projectDetails) {
-                            projectDetails.innerHTML = ''; // Inhalt leeren
-                        }
-                    }
-                    if (tagList) {
-                        tagList.style.display = 'none';
-                        removeTagHighlights(tagList); // Highlights entfernen
-                    }
-    
-                    // Entferne die aktive Klasse von allen Projekten
-                    projects.forEach(project => project.classList.remove('active'));
-                } else {
-                    // Beim Öffnen sicherstellen, dass der Tab-Container leer ist
-                    if (tabProjectsContainer) {
-                        tabProjectsContainer.style.display = 'block';
-                        if (projectDetails) {
-                            projectDetails.innerHTML = ''; // Inhalt leeren
-                        }
-                    }
-                    if (tagList) {
-                        tagList.style.display = 'none';
-                    }
-                }
-            } else {
-                container.style.display = 'none';
-                if (tabProjectsContainer) {
-                    tabProjectsContainer.style.display = 'none';
-                    if (projectDetails) {
-                        projectDetails.innerHTML = ''; // Inhalt leeren
-                    }
-                }
-                if (tagList) {
-                    tagList.style.display = 'none';
-                    removeTagHighlights(tagList);
-                }
-                projects.forEach(project => project.classList.remove('active'));
+        // Ziel-Container aus dem 'data-target' Attribut holen
+        const targetId = this.getAttribute('data-target');
+        const targetContainer = document.getElementById(targetId);
 
-                // Setze das Pluszeichen für andere Links zurück
-                const otherLink = document.querySelector(`a[data-target="${container.id}"]`);
-                if (otherLink) {
-                    const otherTitle = otherLink.querySelector('.timeline-title');
-                    if (otherTitle) {
-                        otherTitle.textContent = `+ ${otherTitle.textContent.slice(2)}`;
-                    }
-                }
-            }
-        });
-    }
-
-    function activateProject(project, projects, container, tagList) {
-        // Entferne aktive Klassen von allen Projekten
-        projects.forEach(p => {
-            p.classList.remove('active');
-            const details = p.nextElementSibling;
-            if (details && details.classList.contains('project-details')) {
-                details.style.display = 'none'; // Mobile Inhalte ausblenden
-            }
-        });
-    
-        // Aktiviere das aktuelle Projekt
-        project.classList.add('active');
-    
-        // Lade den Inhalt des Projekts
-        loadProjectContent(project, container, tagList);
-    
-        // Zeige die Tag-Liste an, wenn ein Projekt ausgewählt wurde
-        if (tagList) {
-            tagList.style.display = 'block'; // Sichtbar machen
-        }
-    }
-
-    // Funktion zum Entfernen aller Tag-Highlights
-    function removeTagHighlights(tagList) {
-        if (!tagList) return;
-
-        const tagItems = tagList.querySelectorAll('li');
-        tagItems.forEach(tag => tag.classList.remove('active-tag'));
-    }
-
-    // Funktion zum Laden des Inhalts eines Projekts
-    function loadProjectContent(project, container, tagList, updateTagsActive = true) {
-        const projectDetails =
-            window.innerWidth >= 769
-                ? container.querySelector('.tab-projects-container .project-details') // Desktop
-                : project.nextElementSibling; // Mobile
-
-        const content = project.getAttribute('data-tab'); // HTML-String extrahieren
-        const description = project.getAttribute('data-description'); // Beschreibung extrahieren
-
-        if (content && projectDetails) {
-            projectDetails.innerHTML = '';
-
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = content;
-
-            const imgElement = tempDiv.querySelector('img');
-            const textElement = tempDiv.querySelector('p');
-
-            if (imgElement) {
-                projectDetails.appendChild(imgElement);
-            }
-
-            if (textElement) {
-                projectDetails.appendChild(textElement);
-            }
-
-            if (description) {
-                const descriptionElement = document.createElement('p');
-                descriptionElement.classList.add('project-description');
-                descriptionElement.textContent = description;
-                projectDetails.appendChild(descriptionElement);
-            }
-
-            projectDetails.style.display = 'flex';
-        }
-
-        // Aktualisiere die Tags nur, wenn erforderlich
-        if (updateTagsActive) {
-            const tagAttribute = project.getAttribute('data-tags');
-            if (tagAttribute) {
-                const tags = tagAttribute.split(',').map(tag => tag.trim());
-                updateTags(tags, tagList);
-            } else {
-                updateTags([], tagList);
-            }
-        }
-    }
-
-    // Funktion zur Aktualisierung der Tags in der jeweiligen Liste
-    function updateTags(tags, tagList) {
-        if (!tagList) return;
-
-        const tagItems = tagList.querySelectorAll('li');
-        tagItems.forEach(tag => tag.classList.remove('active-tag'));
-
-        tags.forEach(tagName => {
-            const tagElement = Array.from(tagItems).find(tag => tag.textContent.trim() === tagName.trim());
-            if (tagElement) {
-                tagElement.classList.add('active-tag');
-            }
-        });
-    }
-
-    // Toggle Links initialisieren
-    toggleLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            const targetId = this.getAttribute('data-target');
-            toggleContainer(targetId, this);
-        });
-    });
-
-    // Funktion zur Aktivierung von Projekten (inkl. Tastatur)
-    containers.forEach(container => {
-        const projects = container.querySelectorAll('.project');
-        const tagList = container.closest('.timeline-content').querySelector('.tag-list');
-
-        projects.forEach(project => {
-            project.setAttribute('tabindex', '0');
-            project.setAttribute('role', 'button');
-
-            if (window.innerWidth < 769) {
-                const mobileDetails = project.nextElementSibling;
-                if (!mobileDetails || !mobileDetails.classList.contains('project-details')) {
-                    const newDetails = document.createElement('div');
-                    newDetails.classList.add('project-details');
-                    project.insertAdjacentElement('afterend', newDetails);
-                }
-            }
-
-            project.addEventListener('click', function () {
-                activateProject(project, projects, container, tagList);
-            });
-
-            project.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    activateProject(project, projects, container, tagList);
+        // Wenn der Container existiert
+        if (targetContainer) {
+            // Alle anderen offenen Container schließen
+            document.querySelectorAll('.projects-container').forEach(function(container) {
+                if (container !== targetContainer) {
+                    container.style.display = 'none';
                 }
             });
-        });
-    });
 
-    // Initialisierung: Schließe alle Hauptcontainer und Tag-Listen
-    containers.forEach(container => {
-        container.style.display = 'none';
-        const tagList = container.closest('.timeline-content').querySelector('.tag-list');
-        if (tagList) tagList.style.display = 'none';
+            // Toggle der Sichtbarkeit des angeklickten Containers
+            if (targetContainer.style.display === 'block') {
+                targetContainer.style.display = 'none';
+            } else {
+                targetContainer.style.display = 'block';
+            }
+        }
     });
+});
+
+
+
+
+// Akkordeon Steuerung
+const accordionButtons = document.querySelectorAll('.accordion-button');
+const accordionContentDisplay = document.getElementById('accordion-content-display');
+
+function updateAccordionDisplay() {
+    if (window.innerWidth <= 768) {
+        // Wechsel zu Mobile-Ansicht: Inhalte in die jeweiligen Accordion-Container zurücksetzen
+        document.querySelectorAll('.accordion-content').forEach(content => {
+            content.style.display = 'none'; // Alle Inhalte ausblenden
+        });
+
+        // Falls ein Inhalt in accordion-content-display ist, den richtigen Content wieder aktivieren
+        const activeContent = accordionContentDisplay.innerHTML.trim();
+        if (activeContent) {
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                if (content.innerHTML.trim() === activeContent) {
+                    content.style.display = 'block';
+                }
+            });
+        }
+    } else {
+        // Wechsel zu Desktop-Ansicht: Alles verstecken, nur den Display-Container nutzen
+        document.querySelectorAll('.accordion-content').forEach(content => {
+            content.style.display = 'none';
+        });
+
+        // Falls ein aktiver Inhalt existiert, diesen in accordion-content-display anzeigen
+        const activeContent = document.querySelector('.accordion-content.active');
+        if (activeContent) {
+            accordionContentDisplay.innerHTML = activeContent.innerHTML;
+        }
+    }
 }
+
+// Event-Listener für Buttons
+accordionButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const targetId = this.getAttribute('data-target');
+        const targetContent = document.getElementById(targetId);
+
+        if (window.innerWidth <= 768) {
+            // Mobile Ansicht: Nur ein aktives Element zurzeit
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+
+            // Aktuelles Element anzeigen
+            targetContent.classList.add('active');
+            targetContent.style.display = 'block';
+        } else {
+            // Desktop Ansicht: Inhalte in den Content-Bereich übertragen
+            document.querySelectorAll('.accordion-content').forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+
+            // Falls Zielinhalt existiert, in den Display-Container übertragen
+            if (targetContent) {
+                accordionContentDisplay.innerHTML = targetContent.innerHTML;
+            }
+        }
+    });
+});
+
+// Event-Listener für Resize
+window.addEventListener('resize', updateAccordionDisplay);   

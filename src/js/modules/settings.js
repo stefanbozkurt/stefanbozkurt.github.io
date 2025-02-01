@@ -1,5 +1,5 @@
 // Funktion zur Aktivierung des Übersetzungsvorgangs beim Klick
-export async function setupSettings() {
+async function setupSettings() {
     const themeSwitch = document.querySelector('.toggle__checkbox');
     const body = document.body;
 
@@ -129,3 +129,6 @@ export async function setupSettings() {
         document.documentElement.lang = 'en'; // Optional: Sprache für SEO ändern
     }
 }
+
+// Aufruf der Funktion
+setupSettings();

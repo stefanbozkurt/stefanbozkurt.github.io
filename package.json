@@ -2,21 +2,12 @@
   "name": "stefanbozkurt.github.io",
   "version": "1.0.0",
   "scripts": {
-    "copy-modules": "copyfiles -u 3 src/js/modules/* dist/js/modules/",
-    "copy-lang": "copyfiles -u 2 src/lang/* dist/lang/",
-    "copy-images": "node scripts/copy-images.js",
-    "minify-js": "terser src/js/global/main.js --compress --mangle --output dist/js/main.min.js",
-
-    "watch:img": "nodemon --watch src/img --exec \"npm run copy-images\"",
-    "watch:lang": "nodemon --watch src/lang --ext json --exec \"npm run copy-lang\"",
-    "watch": "concurrently \"npm run watch:scss\" \"npm run watch:js\" \"npm run watch:html\" \"npm run watch:img\" \"npm run watch:lang\"",
-    "watch:js": "nodemon --watch src/js --ext js --exec \"npm run minify-js && npm run copy-modules\"",
+    "minify-js": "terser src/js/global/main.js src/js/modules/*.js --compress --mangle --output dist/js/main.min.js",  
+    "watch:js": "nodemon --watch src/js --ext js --exec \"npm run minify-js\"",
     "watch:scss": "sass --watch src/css/styles.scss:dist/css/styles.min.css --style compressed --no-source-map",
-    "watch:html": "npx nodemon --watch src --ext html --exec \"npm run build:html\"",
-
-    "build:js": "npm run minify-js",
-    "build:css": "npx clean-css-cli -o dist/css/styles.min.css src/css/styles.css",
-    "build:html": "npx copyfiles -u 1 src/**/*.html src/index.html dist/",
+    "watch:html": "npx nodemon --watch src --ext html --exec \"npm run copy-html\"",
+    "copy-html": "copyfiles -u 1 src/**/*.html src/index.html dist/",
+    "watch": "concurrently \"npm run watch:scss\" \"npm run watch:js\" \"npm run watch:html\"",
     "serve": "http-server dist -p 8080"
   },
   "devDependencies": {

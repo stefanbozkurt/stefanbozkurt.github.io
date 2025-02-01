@@ -56,9 +56,25 @@
     flex: 1 1 33.33%; /* 33% für jede Spalte */
 }
 
-/* Margin nur für die mittlere Spalte */
-.col-33 .col:nth-child(2) {
-    margin: 0 24px; /* Horizontaler Abstand um die mittlere Spalte */
+
+
+@media (max-width: 1280px) {
+    .col-33 {
+        display: flex;
+        flex-wrap: wrap; /* Erlaubt Umbruch nach zwei Spalten */
+    }
+
+    .col-33 .col {
+        width: calc(50%); /* 50% Breite, minus Margin */
+    }
+
+    .col-33 .col:nth-child(2) {
+        margin: 0px; /* Horizontaler Abstand um die mittlere Spalte */
+    }
+
+    .col-33 .col:nth-child(3) {
+        width: 100%; /* Die dritte Spalte soll volle Breite haben */
+    }
 }
 
 /* Ab 768px: Spalten untereinander darstellen */

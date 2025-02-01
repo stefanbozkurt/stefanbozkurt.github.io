@@ -5,163 +5,90 @@
     max-width: 80%;
     margin: 0 auto;
   }
-} 
 
-.projects-container {
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 30px;
-}
-
-a.toggle-projects {
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-.project {
-  cursor: pointer;
-  background: var(--background-color);
-  color: var(--primary-color);
-  transition: transform 0.2s ease, background-color 0.2s ease;
-
-  &.active {
-    font-weight: bold;
-    background-color: var(--neutral-light); /* Optional: Visuelle Hervorhebung für aktives Projekt */
-  }
-
-  &:hover {
-    text-decoration: underline;
-  }
-
-  /* Zeigt den Pipe-Strich nach jedem Projekt (außer dem letzten) */
-  &::after {
-    content: '|';
-    margin-left: 20px; /* Abstand zum Text */
-    color: var(--primary-color); /* Setze die Farbe des Pipes */
-  }
-
-  &:last-child::after {
-    content: ''; /* Entfernt den Pipe beim letzten Projekt */
-  }
-}
-
-.dark-theme {
-  .project {
-    background: var(--neutral-dark);
-    color: var(--neutral-light);
-  }
-}
-
-.project-list {
-  display: block;
-}
-
-.tab-projects-container {
-  .project-details {
-    display: flex;
-    gap: 20px; /* Abstand zwischen Bild und Text */
-    justify-content: flex-start;
-  }
-
-  .project-details img {
-    width: 65%; /* Bild nimmt 65% der Breite ein */
-    height: auto; /* Höhe passt sich automatisch der Breite an */
-    object-fit: contain; /* Bild wird innerhalb des Containers skaliert, behält dabei die Proportionen */
-  }
-
-  .project-details p {
-    width: 35%; /* Text nimmt 35% der Breite ein */
-    font-size: 1.2rem; /* Textgröße */
-    color: var(--primary-color); /* Textfarbe */
-  }
-
-  /* Inhalt nebeneinander anzeigen */
-  .project-content {
-    display: flex;
-    gap: 20px; /* Abstand zwischen Bild und Text */
-  }
-
-  .project-content img {
-    max-width: 65%; /* Maximalgröße für das Bild */
-    height: auto;
-  }
-
-  .project-content p {
-    font-size: 1.2rem; /* Textgröße */
-    color: var(--primary-color); /* Textfarbe */
-    max-width: 35%; /* Text nimmt den verbleibenden Platz ein */
-  }
-}
-
-/* Mobile Ansicht (< 768px) */
-@media screen and (max-width: 768px) {
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .project {
-    border-bottom: none; /* Kein Strich mehr für den letzten Punkt auf mobilen Geräten */
-    padding-bottom: 0; /* Kein Abstand mehr zum nächsten Punkt */
-    margin-bottom: 20px; /* Abstand zwischen den Projekten */
-  }
-
-  .project.active + .project-details {
-    display: block;
-  }
-
-  .tab-projects-container {
-    display: none;
-  }
-}
-
-/* Desktop Ansicht (≥ 769px) */
-@media screen and (min-width: 769px) {
   .projects-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .projects-list {
-    display: flex; /* Horizontal ausrichten */
-    flex-wrap: wrap; /* Zeilenumbruch bei Platzmangel */
-    gap: 10px; /* Abstand zwischen den Projekten */
-    list-style: none; /* Entfernt Aufzählungspunkte */
-    padding: 0;
-    margin: 0;
-  }
-
-  .project {
-    margin-bottom: 10px; /* Abstand nach unten */
-  }
-
-  .tab-projects-container {
-    flex: 1;
-    display: block;
-  }
-
-  .project.active + .project-details {
     display: none;
   }
-}
 
-.tag-list {
-  li.active-tag {
-    background-color: var(--neutral-dark);
-    color: var(--neutral-light);
-    padding: 5px;
+
+  
+  /* Standard-Stile für Akkordeon (Mobile Ansicht) */
+  .accordion-button {
+    width: 100%;
+    display: block;
+    background: #ddd;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+    cursor: pointer;
   }
 
-  .dark-theme & {
-    li.active-tag {
-      background-color: var(--neutral-light);
-      color: var(--primary-color);
+  .accordion-content {
+    display: none;
+    padding: 15px;
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+  }
+
+  /* Container für den Inhalt in der Desktop Ansicht */
+  .accordion-content-display {
+    display: none;
+    margin-top: 20px;
+  }
+
+  /* Desktop Ansicht (ab 768px) */
+  @media (min-width: 768px) {
+    .accordion-button {
+      display: inline-block;
+      width: auto;
+      margin-right: 15px;
+      background: #ddd;
+      padding: 10px 15px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+
+    /* Container für den Inhalt (Desktop) */
+    .accordion-content-display {
+        display: block;
+    }
+
+    /* Tabs nebeneinander anordnen */
+    .accordion-tabs-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* Zeige nur den Inhalt des aktiven Tabs */
+    .accordion-content.active {
+        display: block;
+    }
+
+    /* Inhalt des Akkordeons in der Desktop-Ansicht verstecken */
+    .accordion-content {
+        display: none;
+    }
+  }
+
+  /* Wenn wir in die mobile Ansicht wechseln, wird der Inhalt wieder angezeigt */
+  @media (max-width: 767px) {
+    .accordion-button {
+        width: 100%; /* Vergrößern der Buttons auf Mobile */
+    }
+
+    .accordion-content.active {
+        display: block;
+    }
+  }
+
+
+  /* Desktop Ansicht (ab 768px) */
+  @media (min-width: 768px) {
+ 
+
+    .accordion-content {
+        display: none; /* Alle Inhalte sind standardmäßig unsichtbar auf Desktop */
     }
   }
 }
