@@ -26,10 +26,7 @@ document.querySelectorAll('.toggle-projects').forEach(function(link) {
     });
 });
 
-
-
-
-// Akkordeon Steuerung
+// Akkordeon / Tabs Steuerung
 const accordionButtons = document.querySelectorAll('.accordion-button');
 const accordionContentDisplay = document.getElementById('accordion-content-display');
 
