@@ -2,7 +2,7 @@
   "name": "stefanbozkurt.github.io",
   "version": "1.0.0",
   "scripts": {
-    "minify-js": "terser src/js/global/main.js src/js/modules/*.js --compress --mangle --output dist/js/main.min.js",  
+    "minify-js": "terser src/js/global/main.js src/js/components/*.js --compress --mangle --output dist/js/main.min.js",  
     "watch:js": "nodemon --watch src/js --ext js --exec \"npm run minify-js\"",
     "watch:scss": "sass --watch src/css/styles.scss:dist/css/styles.min.css --style compressed --no-source-map",
     "watch:html": "npx nodemon --watch src --ext html --exec \"npm run copy-html\"",

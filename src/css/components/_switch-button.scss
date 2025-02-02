@@ -1,6 +1,4 @@
  .toggle {
-    margin-top: 24px;
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -62,10 +60,12 @@
     }
  }
 
-.dark-theme .toggle__switch {
-    background-color: var(--neutral-dark);
-    border: 2px solid var(--neutral-light)!important;
-    &::after {
-        border: 2px solid var(--neutral-light);
-    }
- }
+.dark-theme {
+   .toggle__switch {
+      background-color: var(--neutral-dark);
+      border: 2px solid var(--neutral-light)!important;
+      &::after {
+          border: 2px solid var(--neutral-light);
+      }
+   }
+}

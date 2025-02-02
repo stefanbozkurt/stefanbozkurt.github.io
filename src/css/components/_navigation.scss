@@ -43,65 +43,6 @@
     }
   }
   
-  #settings-toggle {
-    position: absolute;
-    right: 20px;
-    top: 30px;
-    width: 30px;
-    height: auto;
-    z-index: 9999;
-    transition: transform 0.3s ease;
-  
-    &.flipped {
-      transform: scaleX(-1);
-    }
-  }
-  
-  #settings {
-    &.active {
-      display: block;
-    }
-  }
-  
-  nav[role='settings-navigation'] {
-    position: absolute;
-    right: 0;
-    top: 15px;
-    width: 100%;
-    max-width: 380px;
-    padding: 76px 15px 15px;
-    background: white;
-    display: none;
-    border: 2px solid var(--neutral-light);
-    background: var(--neutral-light);
-    font-size: 1.2rem;
-  
-    .theme-toggle {
-      margin-top: 6px;
-    }
-
-  
-    .language-selection,
-    .font-size-controls {
-      margin: 0;
-      display: flex;
-      justify-content: flex-end;
-  
-      button {
-        background: var(--primary-color);
-        color: var(--neutral-light);
-        border: 1px solid var(--neutral-light);
-        cursor: pointer;
-  
-        .dark-theme & {
-          background: var(--neutral-dark) !important;
-          color: var(--neutral-light);
-          border: 1px solid var(--neutral-light);
-        }
-      }
-    }
-  }
-  
   nav[role='navigation'] {
     position: absolute;
     right: 0;

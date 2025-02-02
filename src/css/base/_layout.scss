@@ -7,7 +7,7 @@ html {
     background: var(--background-color);
     color: var(--text-color);
   
-    &.dark-theme {
+    .dark-theme {
       background: var(--neutral-dark);
       color: var(--neutral-light);
   
@@ -71,5 +71,6 @@ html {
       margin: 0 0 40px 0;
       font-size: 1.2rem;
     }
+    
   }
   

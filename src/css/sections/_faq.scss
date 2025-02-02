@@ -2,7 +2,8 @@
   background: var(--white);
 
   .accordion-content {
-    max-width: 80%;
+    width: 80%;
+    max-width: 1280px;
     margin: 0 auto;
 
     &-collapse {
@@ -28,9 +29,9 @@
       cursor: pointer;
       width: 100%;
       border: none;
-      padding: 20px;
-      margin: 0 0 5px 0;
-      min-height: 40px;
+      padding: 24px;
+      margin: 0 0 12px 0;
+      min-height: 36px;
       align-items: center;
       text-align: left;
   
@@ -41,6 +42,7 @@
   
     &-body {
       color: var(--text-color);
+      margin: 0 60px 12px 0;
       padding: 20px 0 20px 20px;
       font-size: 1.2rem;
     }

@@ -3,20 +3,20 @@
 @use 'base/typo';
 @use 'base/reset';
 
-@use 'components/preloader';
-@use 'components/navigation';
-@use 'components/tag-list';
-@use 'components/timeline';
-@use 'components/switch-button';
-
 @use 'layout/header';
 @use 'layout/footer';
 @use 'layout/grid';
 
-@use 'modules/hero';
-@use 'modules/competence';
-@use 'modules/experience';
-@use 'modules/know-how';
-@use 'modules/faq';
+@use 'sections/hero';
+@use 'sections/competence';
+@use 'sections/experience';
+@use 'sections/know-how';
+@use 'sections/faq';
+
+@use 'components/preloader';
+@use 'components/navigation';
+@use 'components/settings';
+@use 'components/timeline';
+@use 'components/switch-button';
 
 @use 'utils/mixins';

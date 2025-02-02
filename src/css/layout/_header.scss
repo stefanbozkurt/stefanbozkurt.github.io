@@ -1,58 +1,48 @@
 .header-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  justify-content: space-between;
+  min-height: 90px;
+  
+  .brand {
+    flex-grow: 0;
+    font-weight: bold;
+    font-size: clamp(1.5rem, -0.875rem + 8.333vw, 3.5rem);
+    color: var(--main-text-color);
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  #header-navigation {
+    flex: 1;
     display: flex;
-    align-items: center;
-    max-width: 80%;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    min-height: 90px;
-  
-    // On Scroll animation
-    transition: transform 0.7s 0.3s ease;
-    -webkit-transition: -webkit-transform 0.7s 0.3s ease;
-    -moz-transition: -moz-transform 0.7s 0.3s ease;
-    -ms-transition: -ms-transform 0.7s 0.3s ease;
-  
-    // Stop animation flicker
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-  
-    .brand {
-      font-weight: bold;
-      font-size: clamp(1.5rem, -0.875rem + 8.333vw, 3.5rem);
-      color: var(--main-text-color);
-      white-space: nowrap;
-      text-decoration: none;
-      display: inline-block;
-    }
-  
-    &.hide-nav-bar {
-      transform: translate(0, -100%);
-      -webkit-transform: translate(0, -100%);
-      -moz-transform: translate(0, -100%);
-      -ms-transform: translate(0, -100%);
-      -webkit-backface-visibility: hidden;
-    }
-    & ul a {
-      display: block;
-      padding: 15px;
-      &:hover {
-        background: var(--white);
-        text-decoration: none;
+    justify-content: flex-end;
+    border: 1px solid red;
+    ul {
+      a {
+        display: block;
+        padding: 15px;
+        &:hover {
+          background: var(--white);
+          text-decoration: none;
+        }
       }
     }
-
-    
   }
+}
   
-  .dark-theme {
-    .header-nav {
-      background: var(--neutral-dark);
-      color: var(--neutral-light);
-    }
-    ul a:hover {
-      background: var(--neutral-dark);
-      text-decoration: underline;
-    }
+.dark-theme {
+  .header-nav {
+    background: var(--neutral-dark);
+    color: var(--neutral-light);
   }
+  ul a:hover {
+    background: var(--neutral-dark);
+    text-decoration: underline;
+  }
+}
   

@@ -1,7 +1,8 @@
 .competence { 
 
     .competenceContainer {
-        max-width: 80%;
+        width: 80%;
+        max-width: 1280px;
         margin: 0 auto;
     }
 
@@ -16,7 +17,6 @@
     .col-33 {
         gap: 40px;
         .col {
-            padding: 24px;
             background: var(--white);
             hyphens: auto;
             word-wrap: break-word;
