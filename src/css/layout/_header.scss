@@ -1,48 +1,21 @@
 .header-nav {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
   max-width: 1280px;
   margin: 0 auto;
   justify-content: space-between;
   min-height: 90px;
   
   .brand {
-    flex-grow: 0;
     font-weight: bold;
     font-size: clamp(1.5rem, -0.875rem + 8.333vw, 3.5rem);
     color: var(--main-text-color);
     white-space: nowrap;
     text-decoration: none;
-    display: inline-block;
   }
   
   #header-navigation {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    border: 1px solid red;
-    ul {
-      a {
-        display: block;
-        padding: 15px;
-        &:hover {
-          background: var(--white);
-          text-decoration: none;
-        }
-      }
-    }
+    font-size: 1.2rem;
   }
 }
-  
-.dark-theme {
-  .header-nav {
-    background: var(--neutral-dark);
-    color: var(--neutral-light);
-  }
-  ul a:hover {
-    background: var(--neutral-dark);
-    text-decoration: underline;
-  }
-}
-  

@@ -13,7 +13,9 @@
 @use 'sections/know-how';
 @use 'sections/faq';
 
-@use 'components/preloader';
+
+@use 'components/burger-menu';
+@use 'components/settings-menu';
 @use 'components/navigation';
 @use 'components/settings';
 @use 'components/timeline';
