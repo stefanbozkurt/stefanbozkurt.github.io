@@ -1,4 +1,6 @@
-.competence { 
+.competence {
+
+    background: var(--white);
 
     .competenceContainer {
         width: 80%;
@@ -17,7 +19,7 @@
     .col-33 {
         gap: 40px;
         .col {
-            background: var(--white);
+            background: var(--neutral-light);
             hyphens: auto;
             word-wrap: break-word;
             width: 100%;
@@ -28,18 +30,6 @@
                 justify-content: center;
                 min-height: 15vh;
                 width: 100%;
-            }
-        }
-    }
-}
-
-.dark-theme {
-    .competence {
-        .col-33 {
-            .col {
-                background: var(--neutral-dark);
-                color: var(--neutral-light);
-                border: 1px solid var(--neutral-light);
             }
         }
     }

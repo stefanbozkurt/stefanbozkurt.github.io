@@ -3,6 +3,7 @@
     max-width: 1280px;
     margin: 24px auto;
     padding-top: 40px;
+    color: var(--neutral-light);
     ul {
         margin: 24px 0 0 0;
         list-style-type: none;
@@ -22,12 +23,4 @@
     .col-50 .col {
         padding: 0;
     }
-}
-
-.dark-theme .footer {
-    border-top: 1px solid var(--neutral-light);
-}
-
-.dark-theme .footer ul.main-menu {
-    border-bottom: 0!important;
 }

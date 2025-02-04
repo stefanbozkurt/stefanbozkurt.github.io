@@ -4,7 +4,7 @@ html {
   
   body {
     font-family: 'Roboto Mono', monospace;
-    background: var(--background-color);
+    background: var(--hero-bg);
     color: var(--text-color);
   
     .dark-theme {
@@ -38,9 +38,9 @@ html {
   
     h1 {
       font-size: clamp(2.5rem, -0.875rem + 7.333vw, 7rem);
-      margin: 4rem 0 5rem;
+      margin: 2.5rem 0 2rem -6px;
       padding: 0;
-      line-height: 9rem;
+      line-height: 120%;
       display: inline-block;
     }
   
