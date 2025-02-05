@@ -1,46 +1,46 @@
-#know-how {
+.know-how {
+
     background: var(--neutral-light);
-    .know-howContainer {
+
+    .knowHowContainer {
         width: 80%;
         max-width: 1280px;
         margin: 0 auto;
     }
 
-    .col-50 {
-        margin: 0 0 40px 0;
-        gap: 40px;
-        .col {
-            background: var(--white);
-        }
-    }
-    h3 {
-        margin: 0 0 20px 0px;
-    }
-    p {
-        margin-bottom: 20px;
+    .know-how-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-bottom: 40px;
     }
 
-    abbr {
-        font-weight: bold;
-        cursor: help;
+    .know-how-container:last-of-type {
+        margin-bottom: 0;
     }
-    ul {
-        margin: 0 0 40px 30px;
-    
-        li {
-            font-size: 1.2rem;
-        }
-    }
-}
 
-.dark-theme {
-    #know-how {
-        .col-50 {
-            .col {
-                background: var(--neutral-dark);
-                color: var(--neutral-light);
-                border: 1px solid var(--neutral-light);
-            }
-        }
+    .left {
+        display: flex;
+        gap: 0;
+    }
+
+    .right {
+        display: flex;
+        justify-content: flex-end; /* Damit wird der rechte Container nach rechts verschoben */
+        gap: 0;
+    }
+
+    .content-large {
+        width: 50%;
+        background-color: var(--white);
+        padding: 20px;
+    }
+
+    .content-small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25%;
+        padding: 20px;
     }
 }
