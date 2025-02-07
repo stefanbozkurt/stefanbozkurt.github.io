@@ -1,23 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const themeSwitch = document.querySelector('.toggle__checkbox');
-    const body = document.body;
     const languageSelector = document.getElementById('language-selector');
-
-    // 🌙 Dark-/Light-Mode-Handling
-    function applyTheme() {
-        const isDark = localStorage.getItem('theme') === 'dark';
-        body.classList.toggle('dark-theme', isDark);
-        if (themeSwitch) themeSwitch.checked = isDark;
-    }
-
-    if (themeSwitch) {
-        themeSwitch.addEventListener('change', () => {
-            localStorage.setItem('theme', themeSwitch.checked ? 'dark' : 'light');
-            applyTheme();
-        });
-    }
-
-    applyTheme(); // Direkt beim Laden anwenden
 
     // 🌍 Sprachhandling
     const currentUrl = new URL(window.location.href);

@@ -1,0 +1,43 @@
+// Media Query Mixin: Breakpoints
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == small-phone {
+        @media (max-width: 480px) { @content; }
+    }
+    @else if $breakpoint == tablet {
+        @media (min-width: 991px) { @content; }
+    }
+    @else if $breakpoint == desktop {
+        @media (min-width: 1281px) { @content; }
+    }
+}
+
+/* Nutzung;
+@include respond-to(small-phone) {
+    font-size: 12px;
+}
+
+@include respond-to(tablet) {
+    font-size: 16px;
+}
+
+@include respond-to(desktop) {
+    font-size: 18px;
+}
+*/
+
+// Media Query Mixin: Custom Breakpoints
+
+@mixin custom-breakpoint($width) {
+    @media (max-width: #{$width}px) { @content; }
+}
+  
+/* Nutzung:
+.card {
+    margin: 20px;
+  
+    @include custom-breakpoint(1100) {
+      margin: 10px;
+    }
+}
+*/

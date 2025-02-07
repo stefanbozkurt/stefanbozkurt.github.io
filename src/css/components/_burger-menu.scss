@@ -1,49 +1,53 @@
+@use "../utils/mixins" as m;
+
 #main-menu {
-    position: relative;
-    height: 32px;
+  position: absolute;
+  top: 10px;
+  right:8%;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  padding: 0;
+
+  @include m.respond-to(tablet) {
+    display: none;
+  }
+
+  span {
+    background: var(--primary-color);
     width: 32px;
-    cursor: pointer;
-    display: inline-block;
-  
-    span {
-        background: var(--primary-color);
-        width: 32px;
-        height: 4px;
-        display: block;
-        position: absolute;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+    height: 4px;
+    display: block;
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .bar1 {
+    top: 10px;
+    left: 8px;
+  }
+
+  .bar2 {
+    top: 20px;
+    left: 8px;
+  }
+
+  .bar3 {
+    top: 30px;
+    left: 8px;
+  }
+
+  &.active {
+    .bar1 {
+      transform: rotate(-45deg) translate(-5px, 9px);
     }
 
-    .bar1,
-    .bar2,
+    .bar2 {
+      opacity: 0;
+    }
+
     .bar3 {
-        margin-top: 3px;
-        background: var(--primary-color);
-        width: 32px;
-        height: 4px;
-        position: absolute;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-
-        &:nth-child(2) {
-            margin-top: 13px;
-        }
-
-        &:nth-child(3) {
-            margin-top: 23px;
-        }
+      transform: rotate(45deg) translate(-5px, -9px);
     }
-
-    &.active {
-        .bar1 {
-            transform: rotate(-45deg) translate(-5px, 9px);
-        }
-
-        .bar2 {
-            opacity: 0;
-        }
-
-        .bar3 {
-            transform: rotate(45deg) translate(-5px, -9px);
-        }
-    }
+  }
 }
