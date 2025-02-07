@@ -3,7 +3,7 @@
 .navigation-bar {
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 1;
     width: 100%;
 	height: 64px;
 	background: var(--hero-bg);
@@ -14,6 +14,7 @@
         -moz-box-shadow: 0 14px 14px -14px rgba(0, 0, 0, .75);
         box-shadow: 0 14px 14px -14px rgba(0, 0, 0, .75);
         margin: 0 auto;
+	    height: 60px;
     }
 
     a.active {
@@ -23,14 +24,21 @@
     }
 
 	.brand {
-        margin: 0;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         opacity: 1;
 		width: 80%;
-		margin: 0 auto;
+		margin: 8px auto;
+
+        @include m.respond-to(small-phone) {
+            font-size: 1.2rem;
+			width: 90%;
+		}
 
 		@include m.respond-to(tablet) {
 			opacity: 0;
+            font-size: 1.5rem;
+            margin: 0 auto;
+            width: 100%;
 		}
 
         a {
@@ -86,5 +94,61 @@
                 }
             }
         }
-    }	
+    }
+    
+}
+
+/* Modal Styling */
+.menu-modal {
+    position: fixed;
+    top: 0;
+    right: -80%; /* Startposition (außerhalb des Bildschirms) */
+    height: auto; /* Höhe basierend auf dem Inhalt */
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    opacity: 0;
+    transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+/* Modal Styling */
+.menu-modal {
+    position: fixed;
+    top: 64px;
+    right: 0;
+    height: auto;
+    background: var(--neutral-light);
+    z-index: 1000;
+    opacity: 0; /* Anfangszustand - unsichtbar */
+    visibility: hidden; /* Modal ist standardmäßig unsichtbar */
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; /* Nur Übergang der Sichtbarkeit */
+
+    ul {
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+
+        li {
+            padding: 0;
+            margin: 0;
+            a {
+                color: var(--hero-bg);
+                font-size: 1.2rem;
+                padding: 10px 10px;
+                display: block;
+                text-align: right;
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.menu-modal.active {
+    opacity: 1; /* Sichtbar machen */
+    visibility: visible; /* Sichtbarkeit aktivieren */
+    transition: opacity 0.3s ease-in-out, visibility 0s 0s; /* Sofortige Sichtbarkeit bei Aktivierung */
 }

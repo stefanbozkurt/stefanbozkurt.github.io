@@ -1,27 +1,18 @@
+@use "../utils/mixins" as m;
+
 html {
     scroll-behavior: smooth;
   }
   
   body {
     font-family: 'Roboto Mono', monospace;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background: var(--hero-bg);
     color: var(--text-color);
     overflow-x: hidden;
-    
-    .dark-theme {
-      background: var(--neutral-dark);
-      color: var(--neutral-light);
-  
-      a {
-        color: var(--neutral-light);
-        text-decoration: none;
-  
-        &:hover {
-          color: var(--neutral-light);
-          text-decoration: underline;
-        }
-      }
+
+    @include m.respond-to(tablet) {
+      font-size: 1.2rem;
     }
   
     a {
@@ -29,7 +20,6 @@ html {
       text-decoration: none;
   
       &:hover {
-        color: var(--primary-color);
         text-decoration: underline;
       }
     }
@@ -39,7 +29,7 @@ html {
     }
   
     h1 {
-      font-size: clamp(3rem, -0.875rem + 7.333vw, 7rem);
+      font-size: clamp(2.5rem, -0.875rem + 7.333vw, 7rem);
       margin: 2.5rem 0 2rem 0;
       padding: 0;
       line-height: 120%;

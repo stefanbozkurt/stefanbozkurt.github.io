@@ -4,11 +4,11 @@
     min-height: calc(100vh - 58px);
     background: var(--hero-bg);
     color: var(--neutral-light);
-    padding-top: 50px;
+    padding-top: 70px;
     position: relative;
 
     @include m.respond-to(tablet) {
-        padding-top: 170px;
+        padding-top: 160px;
     }
 
     .hero-container {
@@ -19,6 +19,69 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+        .settings {
+            position: fixed;
+            top: 0px;
+            right: 125px;
+            z-index: 2;
+            color: var(--white);
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            height: 60px;
+            white-space: nowrap;
+
+            @include m.respond-to(small-phone) {
+                right: 70px;
+            }
+
+            @include m.respond-to(tablet) {
+                position: absolute;
+                top: -70px;
+                right: 0;
+            }
+        
+            .settings_gear {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @include m.respond-to(small-phone) {
+                    display: none;
+                }
+
+                @include m.respond-to(tablet) {
+                    display: flex;
+                }
+        
+                &.settings_gear {
+                    padding-left: 12px;
+                    width: 60px;
+                    flex: 0 0 60px;
+                }
+            }
+        
+            .settings-container {
+                display: flex;
+                justify-content: flex-end;
+            
+                .settings-panel {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: 60px;
+                }
+        
+                select {
+                    background: var(--hero-bg);
+                    color: var(--white);
+                    border: 1px solid var(--hero-bg);
+                    padding: 12px 0 10px 10px;
+                    cursor: pointer;
+                }
+            }
+        }
 
         p {
             &.name::before {
@@ -42,80 +105,15 @@
             }
         }
 
-        .settings {
-            background: var(--hero-bg);
-            opacity: 0.9;
-            color: var(--white);
-            display: flex;
-            justify-content: center;
-            width: 50%;
-            height: 60px;
-            white-space: nowrap;
-        
-            a {
-                padding: 10px 25px;
-            }
-        
-            .settings_gear,
-            .chevron {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-        
-                &.settings_gear {
-                    padding-left: 12px;
-                    width: 60px;
-                    flex: 0 0 60px;
-                }
-        
-                &.chevron {
-                    width: 100px;
-                    height: 60px;
-                    border-left: 2px solid var(--hero-bg);
-                    flex: 0 0 100px;
-                    & a {
-                        color: var(--white);
-                    }
-                    &:hover {
-                        background-color: var(--light-grey);
-                    }
-                }
-            }
-        
-            .settings-container {
-                flex: 1;
-                padding: 0 10px;
-                position: relative;
-                overflow: hidden;
-            
-                .settings-panel {
-                    display: flex;
-                    align-items: center;
-                    left: 0;
-                    width: 100%;
-                    height: 60px;
-                }
-        
-                select {
-                    background: var(--hero-bg);
-                    color: var(--white);
-                    border: 1px solid var(--hero-bg);
-                    padding: 10px;
-                    margin: 0 10px 0 0;
-                    cursor: pointer;
-                }
-            }
-        }
-
         .stefan {
             width: 60%;
-            margin: 2rem auto 0;
+            margin: 0 auto;
 
             @include m.respond-to(tablet) {
                 width: 35%;
                 position: absolute;
                 right: 0;
-                top: 0px;
+                top: 60px;
                 margin: 0 auto;
             }
 
@@ -156,7 +154,7 @@
                         }
                     }
                 
-                    .menu-icon {
+                    .network-icon {
                         width: 30px;
                         height: 30px;
                         fill: currentColor;

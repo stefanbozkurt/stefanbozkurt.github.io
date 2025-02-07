@@ -4,20 +4,22 @@
     margin: 24px auto;
     padding-top: 40px;
     color: var(--neutral-light);
+    font-size: 1.2rem;
     ul {
         margin: 24px 0 0 0;
         list-style-type: none;
         border: 0;
-        li {
-            font-size: 1.25rem;
-        }
     }
 
     ul.network-menu {
         li {
             display: inline-block;
-            margin: 0 24px 0 0;
+            margin: 0 24px 0 0; 
         }
+    }
+
+    a {
+        color: var(--neutral-light);
     }
 
     .col-50 .col {
