@@ -4,13 +4,14 @@
   position: absolute;
   top: 10px;
   right:8%;
-  @include m.respond-to(small-phone) {
-    right: 4%;
-  }
   height: 48px;
   width: 48px;
   cursor: pointer;
   padding: 0;
+
+  @include m.respond-to(small-phone) {
+    right: 4%;
+  }
 
   @include m.respond-to(tablet) {
     display: none;
