@@ -1,5 +1,6 @@
-.competence {
+@use "../utils/mixins" as m;
 
+.competence {
     background: var(--white);
 
     .competenceContainer {
@@ -8,23 +9,33 @@
         margin: 0 auto;
     }
 
+    // Überschrift
     h3 {
         min-height: 70px;
     }
 
+    // Bild-Styling
     img {
         margin: 0 auto;
     }
 
+    // Container für die Spalten
     .col-33 {
-        gap: 40px;
+        @include m.respond-to(tablet) {
+            gap: 2px;
+        }
+
         .col {
-            background: var(--neutral-light);
+            position: relative;
+            background: var(--neutral-light); /* Standard Hintergrund */
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Hält Inhalte oben & Pfeil unten */
-            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 10px 40px 40px 20px;
+            font-size: 1rem;
 
+            // Teaser Styling
             .teaser {
                 display: flex;
                 align-items: center;
@@ -33,65 +44,62 @@
                 width: 100%;
             }
 
-            .chevron {
+            // Chevron Styling
+            .plus-minus {
+                position: absolute;
+                top: 0;
+                right: 0;
+                font-size: 30px;
+                cursor: pointer;
+                text-align: center;
+                margin: 10px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 100%;
+                width: 32px;
+                height: 32px;
+                background: var(--hero-bg);
+                color: var(--neutral-light);
+            }
+
+            // Standardmäßiger Hintergrund für alle Spalten
+            &:hover {
+                background: #e5e5e5;
+            }
+
+            // ❗ Inaktive Spalten (ALLE außer der aktiven) sollen farblich hervorgehoben werden
+            &.comp-list:not(.active-col) {
+                background: #dcdcdc; /* Farbe für inaktive Spalten */
+                border-bottom: 40px solid var(--white);
+
+                @include m.respond-to(tablet) {
+                    border-bottom: 2px solid var(--white);
+                }
+            }
+
+            // 🎯 Aktive Spalte bleibt in Standardfarbe
+            &.active-col {
+                background-color: var(--neutral-light) !important; /* Aktive Spalte bleibt wie vorher */
+                
+                @include m.respond-to(tablet) {
+                    border-bottom: 2px solid var(--neutral-light);
+                }
+            }
+
+            // Hover-Effekt nur für nicht aktive Spalten
+            &.comp-list:not(.active-col):hover {
+                background-color: #e5e5e5;
             }
         }
     }
-}
 
-
-.col {
-    cursor: pointer;
-    padding: 20px;
-}
-
-.col:hover {
-    background: #e5e5e5;
-}
-
-
-.active-col {
-    background-color: var(--neutral-light)!important; /* Deine gewünschte aktive Farbe */
-    border-bottom: 24px solid var(--neutral-light);
-}
-
-.comp-list:not(.active-col){
-    border-bottom: 24px solid var(--white);
-}
-
-
-/* Hover-Effekt nur für nicht aktive Spalten */
-.comp-list:not(.active-col):hover {
-    background-color: #e5e5e5;
-}
-
-
-.description-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.description-container {
-    width: 100%;
-    max-width: 1280px;
-    padding: 15px;
-    background: var(--neutral-light);
-    display: none; /* Standardmäßig verstecken */
-}
-
-.chevron {
-    font-size: 30px;
-    float: right;
-}
-
-.chevron {
-    font-size: 30px;
-    cursor: pointer;
-    text-align: center;
-    margin-top: 20px;
+    // Container für die Beschreibung
+    .description-container {
+        width: 100%;
+        max-width: 1280px;
+        padding: 15px;
+        margin: 0 0 40px 0;
+        background: var(--neutral-light);
+        display: none; /* Standardmäßig verstecken */
+    }
 }

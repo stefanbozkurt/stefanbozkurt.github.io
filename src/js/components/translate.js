@@ -5,21 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const currentUrl = new URL(window.location.href);
     const langParam = currentUrl.searchParams.get('lang') || 'de';  // Standard ist Deutsch
 
-    // Lade die Übersetzungen nur, wenn die Sprache nicht 'de' ist
-    async function loadTranslations(language) {
-        if (language === 'de') return {};  // Keine Übersetzungen laden, wenn Deutsch (Standard)
-
-        try {
-            const response = await fetch(`lang/${language}.json`);
-            if (!response.ok) {
-                throw new Error(`Fehler beim Laden der Übersetzungsdatei für ${language}`);
-            }
-            return await response.json();
-        } catch (error) {
-            console.error(error);
-            return {};  // Leere Übersetzungen, falls Fehler
-        }
-    }
+    
 
     // Übersetzung des Inhalts
     async function translateContent(language) {

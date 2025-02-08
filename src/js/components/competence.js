@@ -1,118 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const cols = document.querySelectorAll(".comp-list");
-    const descriptionContainer = document.querySelector(".description-container");
-    const descriptionWrapper = document.querySelector(".description-wrapper");
-    let activeCol = null;
-
-    function checkDescriptionVisibility() {
-        const allPlus = Array.from(cols).every(col => col.querySelector(".chevron").textContent === "+");
-        descriptionContainer.style.display = allPlus ? "none" : "block";
-    }
-
-    function isMobileView() {
-        return window.innerWidth <= 991;
-    }
-
-    function toggleDescription(col) {
-        const descriptionText = col.getAttribute("data-description");
-        const chevron = col.querySelector(".chevron");
-
-        if (activeCol === col) {
-            // Falls gleiche Spalte geklickt oder aktiviert wurde: Alles schließen
-            descriptionContainer.innerHTML = "";
-            chevron.textContent = "+";
-            col.setAttribute("aria-expanded", "false");
-            col.classList.remove("active-col");
-
-            if (isMobileView()) {
-                descriptionContainer.remove();
-            }
-
-            activeCol = null;
-        } else {
-            // Entferne aktive Klasse von allen anderen Spalten
-            cols.forEach(c => {
-                c.classList.remove("active-col");
-                c.querySelector(".chevron").textContent = "+";
-                c.setAttribute("aria-expanded", "false");
-            });
-
-            // Setze aktive Klasse auf aktuelle Spalte
-            col.classList.add("active-col");
-            chevron.textContent = "−";
-            col.setAttribute("aria-expanded", "true");
-
-            descriptionContainer.innerHTML = `<p>${descriptionText}</p>`;
-
-            if (isMobileView()) {
-                col.insertAdjacentElement("afterend", descriptionContainer);
-            } else {
-                descriptionWrapper.appendChild(descriptionContainer);
-            }
-
-            activeCol = col;
-        }
-
-        checkDescriptionVisibility();
-    }
-
-    // Klick- und Tastatur-Eventlistener für jede Spalte hinzufügen
-    cols.forEach(col => {
-        col.addEventListener("click", function () {
-            toggleDescription(col);
-        });
-
-        col.addEventListener("keydown", function (event) {
-            if (event.key === "Enter" || event.key === " ") {
-                event.preventDefault(); // Verhindert Scrollen durch Leertaste
-                toggleDescription(col);
-            }
-        });
-    });
-
-    checkDescriptionVisibility();
-
-    // Falls das Fenster in der Größe verändert wird, prüfen, ob das `.description-container` richtig positioniert ist
-    window.addEventListener("resize", function () {
-        if (activeCol) {
-            if (isMobileView()) {
-                activeCol.insertAdjacentElement("afterend", descriptionContainer);
-            } else {
-                descriptionWrapper.appendChild(descriptionContainer);
-            }
-        } else {
-            descriptionWrapper.appendChild(descriptionContainer);
-        }
-    });
-});
-
-
-
 document.addEventListener("DOMContentLoaded", async function () {
     const cols = document.querySelectorAll(".comp-list");
     const descriptionContainer = document.querySelector(".description-container");
+    const descriptionWrapper = document.querySelector(".description-wrapper");
 
     // Sprachparameter aus der URL (Standardwert ist 'de')
     const currentUrl = new URL(window.location.href);
     const langParam = currentUrl.searchParams.get('lang') || 'de';
 
-    // Funktion zum Laden der Übersetzungen
-    async function loadTranslations(language) {
-        if (language === 'de') {
-            return {}; // Deutsch benötigt keine Übersetzungen, daher ein leeres Objekt zurückgeben
-        }
-
-        try {
-            const response = await fetch(`lang/${language}.json`);
-            if (!response.ok) throw new Error(`Fehler beim Laden der Datei für ${language}`);
-            const data = await response.json();
-            console.log('Geladene Übersetzungen:', data); // Debugging: Gebe die geladenen Übersetzungen aus
-            return data;
-        } catch (error) {
-            console.error(error);
-            return {}; // Leeres Objekt zurückgeben, falls ein Fehler auftritt
-        }
-    }
+    // Keine eigene loadTranslations-Funktion mehr, stattdessen aus translate.js verwenden
+    const translations = await loadTranslations(langParam);
 
     // Funktion zum Generieren der HTML-Liste mit übersetzten Items
     async function generateDescription(col, translations) {
@@ -121,15 +17,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         let htmlContent = `<h4>${title}</h4><ul>`;
         items.forEach(item => {
-            // Debugging: Logge jedes Listenelement
-            console.log(`Originales Listenelement: ${item}`);
-
             // Übersetze jedes Listenelement, falls eine Übersetzung vorhanden ist
             const translatedItem = translations[item] || item;  // Falls keine Übersetzung vorhanden ist, den Originaltext verwenden
-
-            // Debugging: Zeige das übersetzte Element an
-            console.log(`Übersetztes Listenelement: ${translatedItem}`);
-
             htmlContent += `<li>${translatedItem}</li>`;
         });
         htmlContent += `</ul>`;
@@ -137,13 +26,85 @@ document.addEventListener("DOMContentLoaded", async function () {
         return htmlContent;
     }
 
-    // Beim Klicken auf eine Spalte wird die Beschreibung generiert und angezeigt
+    function checkDescriptionVisibility() {
+        const allPlus = Array.from(cols).every(col => col.querySelector(".plus-minus").textContent === "+");
+        descriptionContainer.style.display = allPlus ? "none" : "block";
+    }
+
+    async function toggleDescription(col) {
+        const plusMinus = col.querySelector(".plus-minus");
+
+        if (col.classList.contains("active-col")) {
+            // Falls die Spalte bereits aktiv ist, schließe sie
+            descriptionContainer.innerHTML = ""; // Leere Beschreibung
+            plusMinus.textContent = "+";
+            col.setAttribute("aria-expanded", "false");
+            col.classList.remove("active-col");
+            checkDescriptionVisibility(); // Überprüfen, ob der Container noch angezeigt werden soll
+        } else {
+            // Andernfalls öffne die Beschreibung
+            cols.forEach(c => {
+                c.classList.remove("active-col");
+                c.querySelector(".plus-minus").textContent = "+";
+                c.setAttribute("aria-expanded", "false");
+            });
+
+            col.classList.add("active-col");
+            plusMinus.textContent = "−";
+            col.setAttribute("aria-expanded", "true");
+
+            // Übersetzungen laden und Beschreibung generieren
+            const translations = await loadTranslations(langParam);
+            descriptionContainer.innerHTML = await generateDescription(col, translations);
+
+            checkDescriptionVisibility(); // Überprüfen, ob der Container noch angezeigt werden soll
+
+            // In der mobilen Ansicht: Die Beschreibung direkt unter der aktiven Spalte einfügen
+            if (isMobileView()) {
+                col.insertAdjacentElement("afterend", descriptionContainer);
+            } else {
+                // In der Desktop-Ansicht: Die Beschreibung im descriptionWrapper einfügen
+                descriptionWrapper.appendChild(descriptionContainer);
+            }
+        }
+    }
+
+    function isMobileView() {
+        return window.innerWidth <= 991;
+    }
+
+    // Eventlistener für Spalten hinzufügen
     cols.forEach(col => {
         col.addEventListener("click", async function () {
-            const translations = await loadTranslations(langParam);  // Lade die Übersetzungen für die gewählte Sprache
-            console.log('Verwendete Übersetzungen:', translations);  // Debugging: Gebe die verwendeten Übersetzungen aus
-            descriptionContainer.innerHTML = await generateDescription(col, translations);  // Erzeuge die Beschreibung mit Übersetzung
+            toggleDescription(col); // Beschreibung ein-/ausblenden bei Klick
+        });
+
+        col.addEventListener("keydown", async function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault(); // Verhindert Scrollen durch Leertaste
+                toggleDescription(col); // Beschreibung ein-/ausblenden bei Enter oder Space
+            }
         });
     });
-});
 
+    // Wenn das Fenster in der Größe verändert wird, prüfe, ob die Beschreibung richtig angezeigt wird
+    // Wenn das Fenster in der Größe verändert wird, prüfe, ob die Beschreibung richtig angezeigt wird
+    window.addEventListener("resize", function () {
+        checkDescriptionVisibility();
+
+        // Falls das Fenster in der Größe verändert wird, sicherstellen, dass die Beschreibung an der richtigen Stelle erscheint
+        if (isMobileView()) {
+            // In der mobilen Ansicht: Die Beschreibung direkt unter der aktiven Spalte einfügen
+            if (document.querySelector(".active-col")) {
+                document.querySelector(".active-col").insertAdjacentElement("afterend", descriptionContainer);
+            }
+        } else {
+            // In der Desktop-Ansicht: Die Beschreibung im descriptionWrapper einfügen
+            descriptionWrapper.appendChild(descriptionContainer);
+        }
+    });
+
+
+    // Initiale Sichtbarkeit des Beschreibung-Containers prüfen
+    checkDescriptionVisibility();
+});
