@@ -1,5 +1,4 @@
 .know-how {
-
     background: var(--neutral-light);
 
     .knowHowContainer {
@@ -8,39 +7,86 @@
         margin: 0 auto;
     }
 
-    .know-how-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-        margin-bottom: 40px;
-    }
+    .main-timeline {
+        position: relative;
 
-    .know-how-container:last-of-type {
-        margin-bottom: 0;
-    }
+        &:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
 
-    .left {
-        display: flex;
-        gap: 0;
-    }
+        .timeline {
+            width: 50%;
+            margin: 0 0 20px 20px;
+            float: right;
 
-    .right {
-        display: flex;
-        justify-content: flex-end; /* Damit wird der rechte Container nach rechts verschoben */
-        gap: 0;
-    }
+            &-content {
+                font-size: 1rem;
+                color: var(--hero-bg);
+                background: #e5e5e5;
+                min-height: 125px;
+                padding: 30px 24px 30px 80px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                position: relative;
+                transition: background-color 0.3s ease; // Übergang für Hintergrundfarbe
 
-    .content-large {
-        width: 50%;
-        background-color: var(--white);
-        padding: 20px;
-    }
+                h3 {
+                    font-size: 1.2rem;
+                    margin: 0;
+                }
 
-    .content-small {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 25%;
-        padding: 20px;
+                &:hover {
+                    text-decoration: none;
+                    background-color: #dcdcdc;
+                }
+            }
+
+            &-icon {
+                color: var(--hero-bg);
+                height: 80px;
+                width: 80px;
+                transform: translateY(-50%);
+                position: absolute;
+                left: 0;
+                top: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &:nth-child(even) {
+                float: left;
+                margin: 0 20px 20px 0;
+            }
+
+            // Wenn die Spalte geöffnet ist, den Hintergrund der Timeline ändern
+            &.active {
+                .timeline-content {
+                    background-color: #e5e5e5;  // Grüne Hintergrundfarbe
+                }
+            }
+        }
+
+        @media screen and (max-width: 991px) {
+            .timeline {
+                width: 100%;
+
+                &:nth-child(even) {
+                    float: right;
+                    margin: 0 0 20px 20px;
+                    .timeline-content {
+                        padding: 30px 24px 30px 80px;
+                    }
+
+                    .timeline-icon {
+                        left: 0;
+                    }
+                }
+            }
+        }
     }
 }

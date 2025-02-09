@@ -13,7 +13,7 @@
                 <div class="intro">
                     <p class="name"></p>
                     <h1 class="text---extralarge">Frontend Entwicklung.</h1>
-                    <p><strong data-i18n="greeting">Hallo!</strong></p>
+                    <h2 data-i18n="greeting">Hallo!</h2>
                     <p data-i18n="intro">
                         Ich bin Stefan, Senior Frontend Entwickler mit mehr als 20 Jahren Erfahrung im Frontend-Bereich.
                         Mein Fokus liegt dabei auf WordPress, HubSpot-CMS und der Entwicklung von A/B-Tests, mit denen ich datengetriebene Optimierungen vorantreibe.
@@ -131,10 +131,17 @@
                     
                     <!-- Spalten-Container -->
                     <div class="col-33">
-                        <div class="col comp-list" tabindex="0" data-description="WordPress-Theme-Entwicklung ist meine Spezialität...">
+                        <div class="col comp-list" tabindex="0">
                             <h3 data-i18n="competence-wordpress-headline">WordPress-Theme-Entwicklung</h3><div class="plus-minus">+</div>
                             <div class="teaser">
                                 <img src="img/wordpress.png" width="133" alt="WordPress">
+                            </div>
+                            <div class="description">
+                                <ul>
+                                    <li>Punkt 1</li>
+                                    <li>Punkt 2</li>
+                                    <li>Punkt 3</li>
+                                </ul>
                             </div>
                         </div>
 
@@ -143,6 +150,13 @@
                             <div class="teaser">
                                 <img src="img/hubspot.png" width="237" alt="HubSpot">
                             </div>
+                            <div class="description">
+                                <ul>
+                                    <li>Punkt 4</li>
+                                    <li>Punkt 5</li>
+                                    <li>Punkt 6</li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="col comp-list" tabindex="0" data-description="A/B-Testing hilft, Websites datengetrieben zu optimieren...">
@@ -150,13 +164,18 @@
                             <div class="teaser">
                                 <img src="img/ab-test.png" width="196" alt="AB-Test">
                             </div>
+                            <div class="description">
+                                <ul>
+                                    <li>Punkt 7</li>
+                                    <li>Punkt 8</li>
+                                    <li>Punkt 9</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                    <!-- Description hier her verschieben -->
+                    <div class="description-container"></div>
 
-                    <!-- Wrapper für Beschreibung (Bleibt in der Desktop-Ansicht darunter) -->
-                    <div class="description-wrapper">
-                        <div class="description-container"></div>
-                    </div>
                 </div>
             </section>
 
@@ -164,101 +183,109 @@
                 <div class="knowHowContainer">
                     <h2 data-i18n="know-how-headline">Know-how</h2>
                     <div class="intro">
-                        Webentwicklung bedeutet für mich die Verbindung aus sauberem Code und durchdachter Nutzerführung. Von performantem HTML und CSS bis hin zu datenbankgestützten Anwendungen decke ich ein breites Spektrum an Technologien ab. Mein Fokus liegt auf modernen Front-End-Technologien und einer optimierten User Experience.
+                        Webentwicklung bedeutet für mich die Verbindung aus strukturiertem Code und durchdachter Nutzerführung. Von performantem HTML und CSS bis hin zu datenbankgestützten Anwendungen decke ich ein breites Spektrum an Technologien ab. Mein Fokus liegt auf modernen Front-End-Technologien und einer optimierten User Experience.
                     </div>
                     <div class="know-how-container">
-                        <div class="left">
-                            <div class="content-large">
-                                <h3 data-i18n="know-how-experience1">Technisches Know-how</h3>
-                                <ul data-i18n="know-how-experience-detail1">
-                                    <li>HTML & CSS: Effiziente Entwicklung unter Berücksichtigung moderner Best Practices</li>
-                                    <li>WordPress-Themes: Erstellung und Anpassung, individuelle Template-Entwicklung</li>
-                                    <li>Responsive Design: Mobile-First-Ansatz, Cross-Browser-Kompatibilität, Progressive Enhancement</li>
-                                    <li>JavaScript: Interaktive und dynamische Websites</li>
-                                </ul>
+                  
+                        <div class="main-timeline">
+                            <div class="timeline">
+                                <a href="#" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                            <path d="M3017 4438 c-61 -161 -1377 -3784 -1377 -3790 0 -4 101 -8 224 -8 l223 0 16 43 c62 163 1377 3783 1377 3789 0 4 -101 8 -224 8 l-223 0 -16 -42z"/>
+                                            <path d="M597 3162 l-597 -597 598 -597 c328 -329 601 -601 605 -605 4 -4 75 60 157 142 l150 150 -452 452 -453 453 453 453 452 452 -148 148 c-81 81 -152 147 -157 147 -6 0 -279 -269 -608 -598z"/>
+                                            <path d="M3757 3613 l-147 -148 452 -452 453 -453 -453 -453 -452 -452 150 -150 c82 -82 153 -146 157 -142 4 4 277 276 605 605 l598 597 -597 597 c-329 329 -602 598 -608 598 -6 0 -76 -66 -158 -147z"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="title">Web Development</h3><div class="plus-minus">+</div>
+                                    <div class="description">
+                                        <ul data-i18n="know-how-experience-detail1">
+                                            <li>Entwicklung und Anpassung von WordPress-Themes, inklusive HubSpot-Modulen und der Integration von HUBL für dynamische Inhalte und flexible Layouts in HubSpot CMS.</li>
+                                            <li>Erstellung von responsiven Layouts mit HTML5 und CSS3.</li>
+                                            <li>Implementierung interaktiver Features mit JavaScript.</li>
+                                            <li>Integration von API-Daten in Webseiten (REST, GraphQL).</li>
+                                            <li>Einsatz von KI-gestützten Tools: Unterstützung bei Code-Optimierung, Fehleranalyse und Automatisierung von Entwicklungsprozessen</li>
+                                        </ul>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="content-small">
-                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-                                    <path d="M3017 4438 c-61 -161 -1377 -3784 -1377 -3790 0 -4 101 -8 224 -8 l223 0 16 43 c62 163 1377 3783 1377 3789 0 4 -101 8 -224 8 l-223 0 -16 -42z"/>
-                                    <path d="M597 3162 l-597 -597 598 -597 c328 -329 601 -601 605 -605 4 -4 75 60 157 142 l150 150 -452 452 -453 453 453 453 452 452 -148 148 c-81 81 -152 147 -157 147 -6 0 -279 -269 -608 -598z"/>
-                                    <path d="M3757 3613 l-147 -148 452 -452 453 -453 -453 -453 -452 -452 150 -150 c82 -82 153 -146 157 -142 4 4 277 276 605 605 l598 597 -597 597 c-329 329 -602 598 -608 598 -6 0 -76 -66 -158 -147z"/>
-                                    </g>
-                                </svg>
+                        
+                            <div class="timeline">
+                                <a href="#" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                                <path d="M2323 5106 c-62 -28 -68 -49 -71 -255 -4 -225 1 -265 37 -302 55 -54 146 -44 184 20 25 42 25 449 1 490 -30 51 -96 71 -151 47z"/> 
+                                                <path d="M1190 4692 c-48 -23 -75 -76 -66 -127 6 -32 30 -61 134 -168 152 -155 193 -187 239 -187 46 0 89 27 108 66 19 40 19 67 1 102 -22 41 -297 309 -329 322 -38 14 -46 13 -87 -8z"/>
+                                                <path d="M3354 4690 c-49 -24 -299 -275 -314 -314 -31 -83 25 -166 113 -166 46 0 87 32 239 187 139 143 153 168 125 236 -28 67 -96 91 -163 57z"/> 
+                                                <path d="M2253 4175 c-152 -41 -268 -149 -326 -303 -22 -57 -22 -62 -27 -974 l-5 -917 -340 146 c-220 94 -361 149 -401 156 -150 26 -328 -55 -410 -185 -81 -128 -85 -305 -8 -441 32 -58 72 -96 672 -627 l491 -435 1 -240 c1 -158 5 -252 13 -274 32 -91 162 -104 210 -21 15 25 17 66 17 323 0 163 -3 303 -6 312 -4 9 -272 253 -596 542 -443 395 -594 534 -605 561 -34 82 3 188 80 229 72 38 99 30 554 -166 466 -200 478 -203 535 -152 l33 29 5 1019 c4 812 8 1024 18 1048 25 55 64 97 116 121 87 41 179 28 247 -33 79 -71 73 -22 79 -748 6 -733 1 -689 83 -719 23 -8 219 -43 435 -76 216 -34 420 -70 454 -82 249 -81 452 -265 558 -504 89 -202 91 -502 5 -760 -37 -111 -69 -179 -276 -575 -146 -279 -157 -311 -125 -367 18 -33 66 -62 101 -62 76 0 87 17 375 585 175 343 216 481 227 751 6 168 -4 267 -43 401 -90 310 -329 581 -630 716 -117 52 -199 71 -558 127 -176 28 -331 52 -343 55 l-23 5 0 573 c0 628 -1 639 -60 742 -35 62 -110 137 -170 172 -99 57 -248 77 -357 48z"/>
+                                                <path d="M994 3630 c-57 -23 -85 -100 -57 -158 32 -65 59 -72 286 -72 208 0 243 6 280 47 27 31 32 84 12 126 -29 61 -55 67 -292 66 -114 0 -218 -4 -229 -9z"/>
+                                                <path d="M3189 3625 c-38 -21 -59 -59 -59 -108 0 -49 28 -89 75 -107 15 -6 116 -10 227 -10 221 0 250 6 281 59 34 57 13 137 -43 166 -41 21 -442 21 -481 0z"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="title">Optimierung der User Experience</h3><div class="plus-minus">+</div>
+                                    <div class="description">
+                                        <ul data-i18n="know-how-experience-detail2">
+                                            <li>Sicherstellung der Mobile-First-Entwicklung.</li>
+                                            <li>Lazy Loading von Inhalten zur Ladezeit-Optimierung.</li>
+                                            <li>Erstellung benutzerfreundlicher Formularelemente und Validierung.</li>
+                                            <li>A/B-Testing zur Verbesserung der Benutzeroberfläche.</li>
+                                            <li>Integration von Accessibility (WCAG)-Best Practices.</li>
+                                        </ul>
+                                    </div>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                
-                    <div class="know-how-container">
-                        <div class="right">
-                            <div class="content-small">
-                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-                                        <path d="M2323 5106 c-62 -28 -68 -49 -71 -255 -4 -225 1 -265 37 -302 55 -54 146 -44 184 20 25 42 25 449 1 490 -30 51 -96 71 -151 47z"/> 
-                                        <path d="M1190 4692 c-48 -23 -75 -76 -66 -127 6 -32 30 -61 134 -168 152 -155 193 -187 239 -187 46 0 89 27 108 66 19 40 19 67 1 102 -22 41 -297 309 -329 322 -38 14 -46 13 -87 -8z"/>
-                                        <path d="M3354 4690 c-49 -24 -299 -275 -314 -314 -31 -83 25 -166 113 -166 46 0 87 32 239 187 139 143 153 168 125 236 -28 67 -96 91 -163 57z"/> 
-                                        <path d="M2253 4175 c-152 -41 -268 -149 -326 -303 -22 -57 -22 -62 -27 -974 l-5 -917 -340 146 c-220 94 -361 149 -401 156 -150 26 -328 -55 -410 -185 -81 -128 -85 -305 -8 -441 32 -58 72 -96 672 -627 l491 -435 1 -240 c1 -158 5 -252 13 -274 32 -91 162 -104 210 -21 15 25 17 66 17 323 0 163 -3 303 -6 312 -4 9 -272 253 -596 542 -443 395 -594 534 -605 561 -34 82 3 188 80 229 72 38 99 30 554 -166 466 -200 478 -203 535 -152 l33 29 5 1019 c4 812 8 1024 18 1048 25 55 64 97 116 121 87 41 179 28 247 -33 79 -71 73 -22 79 -748 6 -733 1 -689 83 -719 23 -8 219 -43 435 -76 216 -34 420 -70 454 -82 249 -81 452 -265 558 -504 89 -202 91 -502 5 -760 -37 -111 -69 -179 -276 -575 -146 -279 -157 -311 -125 -367 18 -33 66 -62 101 -62 76 0 87 17 375 585 175 343 216 481 227 751 6 168 -4 267 -43 401 -90 310 -329 581 -630 716 -117 52 -199 71 -558 127 -176 28 -331 52 -343 55 l-23 5 0 573 c0 628 -1 639 -60 742 -35 62 -110 137 -170 172 -99 57 -248 77 -357 48z"/>
-                                        <path d="M994 3630 c-57 -23 -85 -100 -57 -158 32 -65 59 -72 286 -72 208 0 243 6 280 47 27 31 32 84 12 126 -29 61 -55 67 -292 66 -114 0 -218 -4 -229 -9z"/>
-                                        <path d="M3189 3625 c-38 -21 -59 -59 -59 -108 0 -49 28 -89 75 -107 15 -6 116 -10 227 -10 221 0 250 6 281 59 34 57 13 137 -43 166 -41 21 -442 21 -481 0z"/>
-                                    </g>
-                                </svg>
+                        
+                            <div class="timeline">
+                                <a href="#" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                                <path d="M2290 4784 c-101 -36 -179 -116 -205 -209 -8 -27 -19 -113 -25 -190 -7 -77 -12 -140 -13 -140 -47 -15 -200 -76 -248 -101 l-66 -33 -119 101 c-146 124 -182 142 -289 143 -123 0 -157 -21 -352 -217 -191 -193 -207 -220 -207 -343 1 -107 19 -145 142 -289 l100 -118 -43 -91 c-24 -51 -54 -122 -66 -159 l-23 -67 -86 -6 c-160 -12 -241 -25 -285 -44 -57 -25 -124 -93 -155 -156 -25 -49 -25 -54 -25 -305 0 -251 0 -256 25 -305 31 -63 98 -131 155 -156 44 -19 125 -32 285 -44 l86 -6 23 -67 c12 -37 42 -108 66 -159 l43 -91 -101 -119 c-123 -145 -141 -181 -142 -288 0 -123 21 -157 217 -352 193 -191 220 -207 343 -207 107 1 145 19 289 142 l118 100 91 -43 c51 -24 122 -54 159 -66 l67 -23 6 -86 c12 -160 25 -241 44 -285 25 -57 93 -124 156 -155 49 -25 54 -25 305 -25 251 0 256 0 305 25 112 55 179 156 180 271 0 56 -4 70 -27 101 -76 99 -229 78 -273 -36 l-18 -46 -168 0 -168 0 -5 43 c-3 23 -11 110 -16 192 -6 83 -16 164 -21 182 -14 43 -69 90 -121 103 -145 37 -261 84 -389 157 -88 50 -151 57 -204 24 -24 -15 -182 -147 -295 -247 -14 -12 -32 2 -137 109 l-122 122 121 140 c149 173 158 187 158 249 0 40 -9 64 -49 135 -67 117 -114 236 -151 378 -13 51 -53 101 -95 118 -16 7 -100 18 -185 24 -85 7 -174 14 -198 17 l-42 5 0 169 0 169 43 5 c23 3 112 10 197 17 85 6 169 17 185 24 42 17 82 67 95 118 36 139 88 268 165 406 41 75 47 137 16 186 -10 17 -73 93 -139 170 l-121 140 122 122 c105 107 123 121 137 109 113 -100 271 -232 295 -247 55 -34 116 -26 214 30 117 67 236 114 379 151 52 13 107 60 121 103 5 18 15 100 21 182 5 83 13 169 16 192 l5 41 114 4 c123 3 144 11 189 72 29 39 29 133 0 172 -47 64 -63 69 -217 71 -110 2 -152 -1 -187 -13z"/>
+                                                <path d="M3265 4770 c-249 -134 -437 -374 -512 -658 -22 -84 -26 -118 -27 -252 0 -179 17 -267 81 -417 70 -161 196 -320 336 -422 l57 -42 0 -1072 c0 -718 4 -1093 11 -1133 17 -98 78 -210 155 -288 220 -219 573 -219 790 1 63 64 96 118 133 212 l26 66 3 1106 3 1106 80 63 c185 146 308 337 370 575 20 77 23 113 23 245 -1 133 -5 168 -27 252 -31 119 -89 243 -158 343 -69 100 -205 227 -310 290 -74 44 -90 50 -141 50 -61 0 -94 -17 -132 -69 -20 -26 -21 -43 -26 -404 l-5 -376 -117 -47 -118 -47 -117 47 -118 47 -5 376 c-5 361 -6 378 -26 404 -33 45 -70 67 -121 71 -40 4 -58 -1 -108 -27z m-48 -1005 c6 -11 22 -30 35 -42 30 -27 469 -203 508 -203 39 0 478 175 509 203 47 43 51 69 51 334 l1 248 24 -30 c36 -43 91 -160 112 -235 27 -100 24 -283 -6 -380 -30 -98 -80 -192 -139 -262 -56 -67 -90 -96 -191 -163 -130 -87 -115 70 -121 -1263 -6 -1306 2 -1193 -86 -1271 -93 -81 -215 -81 -308 0 -88 78 -80 -35 -86 1271 -6 1333 9 1176 -121 1263 -101 67 -135 96 -191 163 -199 237 -221 591 -52 847 l39 60 5 -260 c3 -170 9 -267 17 -280z"/>
+                                                <path d="M2315 3653 c-352 -75 -663 -341 -794 -678 -117 -298 -106 -607 30 -894 84 -177 205 -322 359 -430 285 -200 618 -259 950 -169 98 26 134 49 159 102 26 53 26 89 1 140 -41 84 -111 102 -245 66 -279 -74 -572 2 -774 202 -106 105 -174 220 -217 368 -25 89 -26 307 0 400 77 285 311 513 595 579 122 28 171 71 178 158 5 65 -26 120 -87 151 -51 25 -60 26 -155 5z"/>
+                                                </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="title">Entwicklungsprozesse & Werkzeuge</h3><div class="plus-minus">+</div>
+                                    <div class="description">
+                                        <ul data-i18n="know-how-experience-detail3">
+                                            <li>Nutzung von Task-Runnern wie Gulp oder Webpack.</li>
+                                            <li>Automatisierung von CSS- und JavaScript-Minifizierung.</li>
+                                            <li>Code-Reviews und Best Practices zur Qualitätssicherung.</li>
+                                            <li>Implementierung von Versionierungssystemen wie Git zur Codeverwaltung und Zusammenarbeit.</li>
+                                            <li>Verwendung von Lokalen Entwicklungsumgebungen zur effizienten Entwicklung und Testing.</li>
+                                        </ul>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="content-large">
-                                <h3 data-i18n="know-how-experience2">Optimierung der User Experience</h3>
-                                <ul data-i18n="know-how-experience-detail2">
-                                    <li>Prototypen & Style Guides: Konsistente und benutzerfreundliche Umsetzung</li>
-                                    <li>Barrierefreiheit (Accessibility): Verbesserung der inklusiven Nutzung</li>
-                                    <li>Performance-Optimierung: Schnellere Ladezeiten und reibungslose Interaktionen</li>
-                                    <li>Interaktionskonzepte: Analyse und Anpassung für intuitive Bedienung</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="know-how-container">
-                        <div class="left">
-                            <div class="content-large">
-                                <h3 data-i18n="know-how-experience3">Entwicklungsprozesse & Werkzeuge</h3>
-                                <ul data-i18n="know-how-experience-detail3">
-                                    <li>JavaScript & Frontend-Bibliotheken: Dynamische Webseiten, A/B-Tests zur Nutzeroptimierung</li>
-                                    <li>WordPress: Advanced Custom Fields, Gutenberg, FSE für flexible Inhaltsverwaltung</li>
-                                    <li>Deployment: GitHub & Node.js zur Automatisierung und nahtlosen Veröffentlichung</li>
-                                    <li>Optimierung von Workflows: Command-Line-Tools & Task-Runner</li>
-                                    <li>Einsatz von KI-gestützten Tools: Unterstützung bei Code-Optimierung, Fehleranalyse und Automatisierung von Entwicklungsprozessen</li>
-                                </ul>
-                            </div>
-                            <div class="content-small">
-                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-                                        <path d="M2290 4784 c-101 -36 -179 -116 -205 -209 -8 -27 -19 -113 -25 -190 -7 -77 -12 -140 -13 -140 -47 -15 -200 -76 -248 -101 l-66 -33 -119 101 c-146 124 -182 142 -289 143 -123 0 -157 -21 -352 -217 -191 -193 -207 -220 -207 -343 1 -107 19 -145 142 -289 l100 -118 -43 -91 c-24 -51 -54 -122 -66 -159 l-23 -67 -86 -6 c-160 -12 -241 -25 -285 -44 -57 -25 -124 -93 -155 -156 -25 -49 -25 -54 -25 -305 0 -251 0 -256 25 -305 31 -63 98 -131 155 -156 44 -19 125 -32 285 -44 l86 -6 23 -67 c12 -37 42 -108 66 -159 l43 -91 -101 -119 c-123 -145 -141 -181 -142 -288 0 -123 21 -157 217 -352 193 -191 220 -207 343 -207 107 1 145 19 289 142 l118 100 91 -43 c51 -24 122 -54 159 -66 l67 -23 6 -86 c12 -160 25 -241 44 -285 25 -57 93 -124 156 -155 49 -25 54 -25 305 -25 251 0 256 0 305 25 112 55 179 156 180 271 0 56 -4 70 -27 101 -76 99 -229 78 -273 -36 l-18 -46 -168 0 -168 0 -5 43 c-3 23 -11 110 -16 192 -6 83 -16 164 -21 182 -14 43 -69 90 -121 103 -145 37 -261 84 -389 157 -88 50 -151 57 -204 24 -24 -15 -182 -147 -295 -247 -14 -12 -32 2 -137 109 l-122 122 121 140 c149 173 158 187 158 249 0 40 -9 64 -49 135 -67 117 -114 236 -151 378 -13 51 -53 101 -95 118 -16 7 -100 18 -185 24 -85 7 -174 14 -198 17 l-42 5 0 169 0 169 43 5 c23 3 112 10 197 17 85 6 169 17 185 24 42 17 82 67 95 118 36 139 88 268 165 406 41 75 47 137 16 186 -10 17 -73 93 -139 170 l-121 140 122 122 c105 107 123 121 137 109 113 -100 271 -232 295 -247 55 -34 116 -26 214 30 117 67 236 114 379 151 52 13 107 60 121 103 5 18 15 100 21 182 5 83 13 169 16 192 l5 41 114 4 c123 3 144 11 189 72 29 39 29 133 0 172 -47 64 -63 69 -217 71 -110 2 -152 -1 -187 -13z"/>
-                                        <path d="M3265 4770 c-249 -134 -437 -374 -512 -658 -22 -84 -26 -118 -27 -252 0 -179 17 -267 81 -417 70 -161 196 -320 336 -422 l57 -42 0 -1072 c0 -718 4 -1093 11 -1133 17 -98 78 -210 155 -288 220 -219 573 -219 790 1 63 64 96 118 133 212 l26 66 3 1106 3 1106 80 63 c185 146 308 337 370 575 20 77 23 113 23 245 -1 133 -5 168 -27 252 -31 119 -89 243 -158 343 -69 100 -205 227 -310 290 -74 44 -90 50 -141 50 -61 0 -94 -17 -132 -69 -20 -26 -21 -43 -26 -404 l-5 -376 -117 -47 -118 -47 -117 47 -118 47 -5 376 c-5 361 -6 378 -26 404 -33 45 -70 67 -121 71 -40 4 -58 -1 -108 -27z m-48 -1005 c6 -11 22 -30 35 -42 30 -27 469 -203 508 -203 39 0 478 175 509 203 47 43 51 69 51 334 l1 248 24 -30 c36 -43 91 -160 112 -235 27 -100 24 -283 -6 -380 -30 -98 -80 -192 -139 -262 -56 -67 -90 -96 -191 -163 -130 -87 -115 70 -121 -1263 -6 -1306 2 -1193 -86 -1271 -93 -81 -215 -81 -308 0 -88 78 -80 -35 -86 1271 -6 1333 9 1176 -121 1263 -101 67 -135 96 -191 163 -199 237 -221 591 -52 847 l39 60 5 -260 c3 -170 9 -267 17 -280z"/>
-                                        <path d="M2315 3653 c-352 -75 -663 -341 -794 -678 -117 -298 -106 -607 30 -894 84 -177 205 -322 359 -430 285 -200 618 -259 950 -169 98 26 134 49 159 102 26 53 26 89 1 140 -41 84 -111 102 -245 66 -279 -74 -572 2 -774 202 -106 105 -174 220 -217 368 -25 89 -26 307 0 400 77 285 311 513 595 579 122 28 171 71 178 158 5 65 -26 120 -87 151 -51 25 -60 26 -155 5z"/>
-                                        </g>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="know-how-container">
-                        <div class="right">
-                            <div class="content-small">
-                                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
-                                        <path d="M1725 5113 c-38 -2 -146 -10 -240 -18 -791 -72 -1345 -290 -1462 -575 -17 -43 -18 -127 -18 -1960 l0 -1915 27 -57 c53 -114 169 -212 359 -302 406 -194 1069 -299 1784 -283 377 9 677 46 1017 124 l157 36 83 -41 c178 -86 317 -116 528 -115 138 1 167 4 272 31 541 140 909 629 885 1177 -13 302 -118 550 -322 764 -176 185 -384 299 -632 347 -104 21 -316 23 -413 5 -437 -81 -784 -382 -919 -800 -40 -122 -55 -218 -55 -356 0 -139 15 -234 55 -358 53 -163 144 -319 252 -434 34 -36 45 -54 36 -58 -27 -9 -295 -55 -409 -69 -715 -92 -1544 -30 -2065 154 -229 81 -391 186 -424 273 -7 18 -11 185 -11 478 l0 450 42 -26 c251 -156 677 -274 1198 -330 174 -19 677 -31 883 -20 127 6 152 10 179 29 57 38 62 115 11 162 l-27 25 -295 -7 c-418 -9 -794 17 -1108 77 -467 89 -809 241 -869 385 -11 27 -14 121 -14 479 0 245 3 445 6 445 3 0 19 -9 35 -20 51 -37 251 -128 359 -163 669 -221 1744 -255 2535 -81 259 58 482 138 642 233 l51 30 4 -104 c3 -93 5 -106 27 -129 30 -32 81 -43 122 -26 62 26 60 -22 57 997 l-3 928 -27 50 c-160 305 -771 513 -1653 565 -156 9 -469 11 -640 3z m755 -224 c608 -48 1117 -195 1297 -375 84 -84 80 -161 -13 -242 -377 -330 -1644 -477 -2632 -307 -534 93 -917 274 -917 435 0 183 476 382 1110 464 107 14 344 33 495 40 116 5 521 -4 660 -15z m-2128 -909 c647 -332 2045 -399 2973 -143 170 47 403 145 487 205 l28 19 0 -456 c0 -509 4 -482 -72 -551 -143 -132 -467 -249 -880 -319 -300 -51 -425 -59 -848 -60 -404 0 -505 6 -784 46 -520 75 -955 246 -1027 403 -17 38 -19 75 -19 489 l0 449 33 -21 c17 -12 67 -40 109 -61z m3770 -1864 c387 -74 677 -360 765 -751 21 -96 21 -288 -1 -389 -80 -370 -372 -662 -742 -742 -101 -22 -293 -22 -389 -1 -344 77 -609 312 -718 638 -38 114 -50 212 -44 351 19 440 326 797 768 893 84 18 269 19 361 1z"/>
-                                        <path d="M3998 1583 c-35 -22 -46 -49 -167 -416 -94 -284 -101 -310 -91 -342 16 -47 53 -75 102 -75 73 0 82 18 206 390 62 184 112 347 112 362 0 70 -101 120 -162 81z"/>
-                                        <path d="M3343 1358 c-189 -188 -189 -190 8 -383 116 -113 118 -115 164 -115 38 0 52 5 76 29 24 24 29 38 29 75 0 44 -4 50 -80 129 l-79 83 70 70 c85 83 105 121 89 170 -16 47 -54 74 -103 74 -38 0 -47 -7 -174 -132z"/>
-                                        <path d="M4321 1476 c-45 -25 -64 -91 -40 -139 6 -12 43 -55 82 -94 l71 -73 -82 -84 c-75 -77 -82 -87 -82 -124 0 -79 80 -133 146 -99 16 9 84 71 152 140 112 113 122 127 122 161 0 20 -6 49 -14 64 -17 32 -222 235 -253 251 -29 15 -72 13 -102 -3z"/>
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="content-large">
-                                <h3 data-i18n="know-how-experience4">Back-End & Datenbanken</h3>
-                                <ul data-i18n="know-how-experience-detail4">
-                                    <li>PHP: Entwicklung serverseitiger Logik, WordPress-Template-Erstellung</li>
-                                    <li>ACF & Gutenberg: Integration für flexible Inhaltsverwaltung</li>
-                                    <li>HubSpot: Serverless Functions zur Erweiterung von Backend-Funktionalitäten</li>
-                                </ul>
+                        
+                            <div class="timeline">
+                                <a href="#" class="timeline-content">
+                                    <div class="timeline-icon">
+                                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                                            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+                                                <path d="M1725 5113 c-38 -2 -146 -10 -240 -18 -791 -72 -1345 -290 -1462 -575 -17 -43 -18 -127 -18 -1960 l0 -1915 27 -57 c53 -114 169 -212 359 -302 406 -194 1069 -299 1784 -283 377 9 677 46 1017 124 l157 36 83 -41 c178 -86 317 -116 528 -115 138 1 167 4 272 31 541 140 909 629 885 1177 -13 302 -118 550 -322 764 -176 185 -384 299 -632 347 -104 21 -316 23 -413 5 -437 -81 -784 -382 -919 -800 -40 -122 -55 -218 -55 -356 0 -139 15 -234 55 -358 53 -163 144 -319 252 -434 34 -36 45 -54 36 -58 -27 -9 -295 -55 -409 -69 -715 -92 -1544 -30 -2065 154 -229 81 -391 186 -424 273 -7 18 -11 185 -11 478 l0 450 42 -26 c251 -156 677 -274 1198 -330 174 -19 677 -31 883 -20 127 6 152 10 179 29 57 38 62 115 11 162 l-27 25 -295 -7 c-418 -9 -794 17 -1108 77 -467 89 -809 241 -869 385 -11 27 -14 121 -14 479 0 245 3 445 6 445 3 0 19 -9 35 -20 51 -37 251 -128 359 -163 669 -221 1744 -255 2535 -81 259 58 482 138 642 233 l51 30 4 -104 c3 -93 5 -106 27 -129 30 -32 81 -43 122 -26 62 26 60 -22 57 997 l-3 928 -27 50 c-160 305 -771 513 -1653 565 -156 9 -469 11 -640 3z m755 -224 c608 -48 1117 -195 1297 -375 84 -84 80 -161 -13 -242 -377 -330 -1644 -477 -2632 -307 -534 93 -917 274 -917 435 0 183 476 382 1110 464 107 14 344 33 495 40 116 5 521 -4 660 -15z m-2128 -909 c647 -332 2045 -399 2973 -143 170 47 403 145 487 205 l28 19 0 -456 c0 -509 4 -482 -72 -551 -143 -132 -467 -249 -880 -319 -300 -51 -425 -59 -848 -60 -404 0 -505 6 -784 46 -520 75 -955 246 -1027 403 -17 38 -19 75 -19 489 l0 449 33 -21 c17 -12 67 -40 109 -61z m3770 -1864 c387 -74 677 -360 765 -751 21 -96 21 -288 -1 -389 -80 -370 -372 -662 -742 -742 -101 -22 -293 -22 -389 -1 -344 77 -609 312 -718 638 -38 114 -50 212 -44 351 19 440 326 797 768 893 84 18 269 19 361 1z"/>
+                                                <path d="M3998 1583 c-35 -22 -46 -49 -167 -416 -94 -284 -101 -310 -91 -342 16 -47 53 -75 102 -75 73 0 82 18 206 390 62 184 112 347 112 362 0 70 -101 120 -162 81z"/>
+                                                <path d="M3343 1358 c-189 -188 -189 -190 8 -383 116 -113 118 -115 164 -115 38 0 52 5 76 29 24 24 29 38 29 75 0 44 -4 50 -80 129 l-79 83 70 70 c85 83 105 121 89 170 -16 47 -54 74 -103 74 -38 0 -47 -7 -174 -132z"/>
+                                                <path d="M4321 1476 c-45 -25 -64 -91 -40 -139 6 -12 43 -55 82 -94 l71 -73 -82 -84 c-75 -77 -82 -87 -82 -124 0 -79 80 -133 146 -99 16 9 84 71 152 140 112 113 122 127 122 161 0 20 -6 49 -14 64 -17 32 -222 235 -253 251 -29 15 -72 13 -102 -3z"/>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="title">Back-End & Datenbanken</h3><div class="plus-minus">+</div>
+                                    <div class="description">
+                                        <ul data-i18n="know-how-experience-detail4">
+                                            <li>Erweiterung von WordPress mit JavaScript-basierter Interaktivität und PHP-Logik für individuelle Lösungen.</li>
+                                            <li>ACF & Gutenberg: Flexibles Content-Management durch benutzerdefinierte Felder und Blöcke.</li>
+                                            <li>Nutzung von AJAX für asynchrone Datenabfragen.</li>
+                                            <li>PHP: Entwicklung serverseitiger Logik, WordPress-Template-Erstellung</li>
+                                            <li>Implementierung und Anpassung von Frontend-Site Editing (FSE) in WordPress, um eine benutzerfreundliche und visuelle Seitenbearbeitung im Backend zu ermöglichen.</li>
+                                        </ul>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

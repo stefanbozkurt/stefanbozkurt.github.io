@@ -22,7 +22,7 @@
   
     &-button {
       display: flex;
-      background-color: var(--white);
+      background: #e5e5e5;
       font-size: 1.2rem;
       color: var(--primary-color);
       position: relative;
@@ -34,10 +34,16 @@
       min-height: 36px;
       align-items: center;
       text-align: left;
+
+      transition: background 0.3s ease-in-out;
   
       .accordion-icon {
         text-decoration: none;
       }
+
+      &:hover{
+        background-color: #dcdcdc;
+      };
     }
   
     &-body {
@@ -49,29 +55,18 @@
   
     &-icon {
       position: absolute;
-      right: 20px;
-      font-weight: bold;
-      font-size: 1.2em;
+      right: 10px;
+      top: 10px;
+      font-size: 30px;
+      font-weight: normal;
       display: inline-block;
       background: var(--primary-color);
       color: var(--neutral-light);
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-  }
-}
-
-.dark-theme {
-  .accordion {
-    &-button {
-      color: var(--neutral-light);
-    }
-
-    &-body {
-      color: var(--neutral-light);
     }
   }
 }

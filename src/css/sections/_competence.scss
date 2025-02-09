@@ -9,57 +9,42 @@
         margin: 0 auto;
     }
 
-    // Überschrift
-    h3 {
-        min-height: 70px;
-    }
-
-    // Bild-Styling
-    img {
-        margin: 0 auto;
-    }
-
-    // Container für die Spalten
+    // Spalten-Container
     .col-33 {
+        display: flex;
+        gap: 20px;
+
         @include m.respond-to(tablet) {
             gap: 2px;
         }
 
         .col {
             position: relative;
-            background: var(--neutral-light); /* Standard Hintergrund */
+            background: var(--neutral-light);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             cursor: pointer;
-            padding: 10px 40px 40px 20px;
+            padding: 10px 50px 24px 24px;
             font-size: 1rem;
+            transition: background 0.3s ease-in-out;
 
-            // Teaser Styling
+            // Titel
+            h3 {
+                min-height: 70px;
+            }
+
+            // Teaser-Bild
             .teaser {
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 min-height: 15vh;
                 width: 100%;
-            }
 
-            // Chevron Styling
-            .plus-minus {
-                position: absolute;
-                top: 0;
-                right: 0;
-                font-size: 30px;
-                cursor: pointer;
-                text-align: center;
-                margin: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 32px;
-                height: 32px;
-                background: var(--hero-bg);
-                color: var(--neutral-light);
+                img {
+                    margin: 0 auto;
+                }
             }
 
             // Standardmäßiger Hintergrund für alle Spalten
@@ -67,9 +52,9 @@
                 background: #e5e5e5;
             }
 
-            // ❗ Inaktive Spalten (ALLE außer der aktiven) sollen farblich hervorgehoben werden
+            // ❗ Inaktive Spalten farblich hervorheben
             &.comp-list:not(.active-col) {
-                background: #dcdcdc; /* Farbe für inaktive Spalten */
+                background: #e5e5e5;
                 border-bottom: 40px solid var(--white);
 
                 @include m.respond-to(tablet) {
@@ -79,16 +64,21 @@
 
             // 🎯 Aktive Spalte bleibt in Standardfarbe
             &.active-col {
-                background-color: var(--neutral-light) !important; /* Aktive Spalte bleibt wie vorher */
-                
+                background-color: var(--neutral-light) !important;
+
                 @include m.respond-to(tablet) {
                     border-bottom: 2px solid var(--neutral-light);
+                }
+
+                .plus-minus {
+                    background: var(--neutral-dark);
+                    color: var(--white);
                 }
             }
 
             // Hover-Effekt nur für nicht aktive Spalten
             &.comp-list:not(.active-col):hover {
-                background-color: #e5e5e5;
+                background-color: #dcdcdc;
             }
         }
     }
@@ -100,6 +90,23 @@
         padding: 15px;
         margin: 0 0 40px 0;
         background: var(--neutral-light);
-        display: none; /* Standardmäßig verstecken */
+        display: none; // Standardmäßig versteckt
+    }
+
+    // Mobile Ansicht - Beschreibung unter der jeweiligen Spalte
+    @include m.respond-to(mobile) {
+        .col-33 {
+            flex-direction: column;
+        }
+
+        .col {
+            width: 100%;
+
+            &.active-col {
+                .description {
+                    display: block;
+                }
+            }
+        }
     }
 }
