@@ -1,37 +1,37 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll(".navigation-bar a");
-    const navbar = document.querySelector(".navigation-bar");
 
-    function highlightNav() {
-        let scrollPosition = window.scrollY + window.innerHeight / 3; // Zuvor war es /6, das kannst du je nach Bedarf anpassen
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navigation-bar a");
+const navbar = document.querySelector(".navigation-bar");
 
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            const sectionId = section.getAttribute("id");
+function highlightNav() {
+    let scrollPosition = window.scrollY + window.innerHeight / 3; // Zuvor war es /6, das kannst du je nach Bedarf anpassen
 
-            // Überprüfe, ob der aktuelle Scroll-Bereich innerhalb der Sektion liegt
-            if (
-                scrollPosition >= sectionTop &&
-                scrollPosition < sectionTop + sectionHeight
-            ) {
-                navLinks.forEach((link) => {
-                    link.classList.remove("active"); // Alle Links zuerst zurücksetzen
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const sectionId = section.getAttribute("id");
 
-                    // Aktuellen Link basierend auf der ID der Sektion aktivieren
-                    if (link.getAttribute("href") === `#${sectionId}`) {
-                        link.classList.add("active");
-                    }
-                });
-            }
-        });
-    }
+        // Überprüfe, ob der aktuelle Scroll-Bereich innerhalb der Sektion liegt
+        if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+        ) {
+            navLinks.forEach((link) => {
+                link.classList.remove("active"); // Alle Links zuerst zurücksetzen
 
-    // Überprüfe beim Scrollen regelmäßig, ob das Highlighting aktualisiert werden muss
-    window.addEventListener("scroll", () => {
-        requestAnimationFrame(highlightNav); // Damit das Highlighting effizient läuft
+                // Aktuellen Link basierend auf der ID der Sektion aktivieren
+                if (link.getAttribute("href") === `#${sectionId}`) {
+                    link.classList.add("active");
+                }
+            });
+        }
     });
+}
 
-    highlightNav(); // Direkt beim Laden ausführen
+// Überprüfe beim Scrollen regelmäßig, ob das Highlighting aktualisiert werden muss
+window.addEventListener("scroll", () => {
+    requestAnimationFrame(highlightNav); // Damit das Highlighting effizient läuft
 });
+
+highlightNav(); // Direkt beim Laden ausführen
+
