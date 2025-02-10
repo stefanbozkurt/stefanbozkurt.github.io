@@ -1,5 +1,34 @@
+@use "../utils/mixins" as m;
+
 #experience {
   background: var(--white);
+
+  .col-50 {
+    .col {
+      padding: 0;
+    }
+  }
+
+  .toggle-projects {
+    background: #e5e5e5;
+    display: flex;
+    min-height: 60px;
+    align-items: center;
+    padding: 28px 48px 24px 24px;
+    transition: background-color 0.3s ease;
+    &:hover {
+      text-decoration: none;
+      background: #dcdcdc;
+    }
+
+    .plus-minus {
+      top: 31px;
+      @include m.respond-to(tablet) {
+        top: 0;
+      }
+    }
+    
+  }
 
   .projects-container {
     display: none;
@@ -12,15 +41,15 @@
     background: #ddd;
     padding: 10px;
     text-align: left;
-    border: 1px solid #ccc;
+    border: 0 none;
+    margin: 12px 0 0 0;
     cursor: pointer;
   }
 
   .accordion-tabs-content {
     display: none;
-    padding: 15px;
+    padding: 24px;
     background: #f4f4f4;
-    border: 1px solid #ccc;
   }
 
   /* Container für den Inhalt in der Desktop Ansicht */
@@ -34,12 +63,14 @@
     .accordion-button {
       display: inline-block;
       width: auto;
-      margin-right: 15px;
-      background: #ddd;
+      margin-right: 12px;
+      background: #e5e5e5;
       padding: 10px 15px;
       text-align: center;
       cursor: pointer;
-      border: 1px solid #ccc;
+      &:hover {
+        background: #dcdcdc;
+      } 
     }
 
     /* Container für den Inhalt (Desktop) */

@@ -53,7 +53,6 @@
     &-icon {
       position: absolute;
       right: 10px;
-      top: 10px;
       font-size: 30px;
       font-weight: normal;
       display: inline-block;
@@ -64,6 +63,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 50%;
     }
   }
 }

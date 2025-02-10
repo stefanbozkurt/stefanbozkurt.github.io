@@ -104,7 +104,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .period .timeline-content {
         padding: 1px 0 15px;
     }
@@ -114,7 +114,7 @@
 }
 
 .timeline-split {
-    @media (min-width: 768px) {
+    @media (min-width: 991px) {
         .timeline {
             display: table;
         }
@@ -138,6 +138,7 @@
         .timeline-content {
             padding: 0px 0 24px 30px;
             margin: 0px 0 15px 0;
+            width: 100%;
         }
         .timeline-info {
             padding-right: 30px;
