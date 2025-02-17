@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
             brand.style.transition = "none"; // Kein Übergang, immer sichtbar
         } else {
             // Ab 991px: Scrollen beeinflusst die Sichtbarkeit
-            if (navBar.getBoundingClientRect().top === 0) {
+            if (navBar.getBoundingClientRect().top <= 294) {
                 // Einblenden bei top: 0
                 brand.style.opacity = "1";
                 brand.style.transition = "opacity 0.3s ease-in-out";

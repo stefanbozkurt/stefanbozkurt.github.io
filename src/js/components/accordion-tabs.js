@@ -39,6 +39,12 @@ document.querySelectorAll('.projects-container').forEach(container => {
             const targetId = this.getAttribute('data-target');
             const targetContent = container.querySelector(`#${targetId}`);
 
+            // Entferne die 'active' Klasse von allen Buttons im Container
+            accordionButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Setze die 'active' Klasse auf den aktuellen Button
+            this.classList.add('active');
+
             if (window.innerWidth <= 768) {
                 // Mobile Ansicht: Nur ein aktives Element zurzeit
                 container.querySelectorAll('.accordion-tabs-content').forEach(content => {
@@ -70,9 +76,7 @@ document.querySelectorAll('.projects-container').forEach(container => {
 
 // Plus-Minus-Icon Steuerung & `accordion-content-display` schließen
 document.querySelectorAll('.toggle-projects').forEach(toggle => {
-    toggle.addEventListener('click', function (event) {
-        event.preventDefault(); // Verhindert das Springen zur ID
-
+    toggle.addEventListener('click', function () {
         const targetContainer = document.getElementById(this.getAttribute('data-target'));
         const plusMinusIcon = this.querySelector('.plus-minus');
         const accordionContentDisplay = targetContainer.querySelector('.accordion-content-display'); // Sucht den richtigen Display-Container
@@ -99,6 +103,10 @@ document.querySelectorAll('.toggle-projects').forEach(toggle => {
         } else {
             plusMinusIcon.textContent = '+'; // Plus-Symbol, wenn geschlossen
         }
+
+        // Entferne die 'active' Klasse von allen Accordion-Buttons im Container
+        const accordionButtons = targetContainer.querySelectorAll('.accordion-button');
+        accordionButtons.forEach(btn => btn.classList.remove('active'));
 
         // Schließt den `accordion-content-display`, wenn der Container geöffnet oder geschlossen wird
         if (accordionContentDisplay) {

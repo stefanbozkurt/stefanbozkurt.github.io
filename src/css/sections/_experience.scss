@@ -12,9 +12,11 @@
   .toggle-projects {
     background: #e5e5e5;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     min-height: 60px;
     align-items: center;
-    padding: 28px 48px 24px 24px;
+    padding: 24px 48px 24px 24px;
     transition: background-color 0.3s ease;
     &:hover {
       text-decoration: none;
@@ -22,9 +24,9 @@
     }
 
     .plus-minus {
-      top: 31px;
+      top: auto;
       @include m.respond-to(tablet) {
-        top: 0;
+        top: auto;
       }
     }
     
@@ -32,6 +34,10 @@
 
   .projects-container {
     display: none;
+
+    .projects-intro {
+      padding: 24px 0;
+    }
   }
   
   /* Standard-Stile für Akkordeon (Mobile Ansicht) */
@@ -68,20 +74,42 @@
       padding: 10px 15px;
       text-align: center;
       cursor: pointer;
+      transition: 0.3s ease;
       &:hover {
         background: #dcdcdc;
-      } 
+      }
+      &.active {
+        background: var(--hero-bg);
+        color: var(--neutral-light);
+      }
     }
 
     /* Container für den Inhalt (Desktop) */
     .accordion-content-display {
         display: block;
+
+        h4 {
+          padding: 0 0 14px 0;
+          font-size: 1.2rem;
+        }
+
+        p {
+          margin: 0 0 24px 0;
+        }
+
+        ul {
+          margin: 0 0 0 24px;
+          padding: 0;
+        }
     }
 
     /* Tabs nebeneinander anordnen */
     .accordion-tabs-container {
         display: flex;
         flex-wrap: wrap;
+        h4 {
+          margin: 24px 0 0 0;
+        }
     }
 
     /* Zeige nur den Inhalt des aktiven Tabs */
