@@ -54,8 +54,11 @@
 
   .accordion-tabs-content {
     display: none;
-    padding: 24px;
     background: #f4f4f4;
+
+    img {
+      height: auto;
+    }
   }
 
   /* Container für den Inhalt in der Desktop Ansicht */

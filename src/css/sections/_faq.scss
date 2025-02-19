@@ -1,8 +1,9 @@
+@use "../utils/mixins" as m;
+
 .faq {
   background: var(--neutral-light);
 
   .accordion-content {
-
     &-collapse {
       display: none;
       overflow: hidden;
@@ -20,18 +21,25 @@
     &-button {
       display: flex;
       background: #e5e5e5;
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--primary-color);
       position: relative;
       cursor: pointer;
       width: 100%;
       border: none;
-      padding: 24px;
       margin: 0 0 12px 0;
+      padding: 12px 42px 12px 12px;
       min-height: 36px;
       align-items: center;
       text-align: left;
       transition: background 0.3s ease-in-out;
+      text-wrap: wrap;
+
+      @include m.respond-to(tablet) {
+        margin: 0 0 12px 0;
+        padding: 24px 48px 24px 24px;
+        font-size: 1.2rem;
+      }
   
       .accordion-icon {
         text-decoration: none;
@@ -44,9 +52,15 @@
   
     &-body {
       color: var(--text-color);
-      margin: 0 60px 12px 0;
-      padding: 20px 0 20px 20px;
-      font-size: 1.2rem;
+      margin: 0 12px 12px 0;
+      padding: 0px 0 0px 12px;
+      font-size: 1rem;
+
+      @include m.respond-to(tablet) {
+        margin: 0 24px 12px 0;
+        padding: 20px 0 20px 20px;
+        font-size: 1.2rem;
+      }
     }
   
     &-icon {

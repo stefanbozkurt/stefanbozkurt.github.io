@@ -32,7 +32,7 @@
     @media (max-width: #{$width}px) { @content; }
 }
   
-/* Nutzung:
+/* Use:
 .card {
     margin: 20px;
   

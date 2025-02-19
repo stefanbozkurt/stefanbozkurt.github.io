@@ -1,3 +1,4 @@
+@use "../utils/mixins" as m;
 .know-how {
     background: var(--neutral-light);
 
@@ -20,13 +21,19 @@
                 color: var(--hero-bg);
                 background: #e5e5e5;
                 min-height: 125px;
-                padding: 30px 24px 30px 80px;
+                padding: 45px 24px 30px 80px;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                justify-content: center;
                 position: relative;
                 transition: background-color 0.3s ease;
+
+                @include m.respond-to(small-phone) {
+                    align-items: unset;
+                    justify-content: unset;
+                    padding: 30px 12px 30px 12px;
+                    min-height: unset;
+                }
 
                 h3 {
                     font-size: 1.2rem;
@@ -50,6 +57,11 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+
+                @include m.respond-to(small-phone) {
+                    display: none;
+                }
+                
             }
 
             &:nth-child(even) {
@@ -74,6 +86,9 @@
                     margin: 0 0 20px 20px;
                     .timeline-content {
                         padding: 30px 24px 30px 80px;
+                        @include m.respond-to(small-phone) {
+                            padding: 30px 12px 30px 12px;
+                        }
                     }
 
                     .timeline-icon {

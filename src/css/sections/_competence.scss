@@ -39,7 +39,7 @@
                 background: #e5e5e5;
             }
 
-            // ❗ Inaktive Spalten farblich hervorheben
+            // Inaktive Spalten farblich hervorheben
             &.comp-list:not(.active-col) {
                 background: #e5e5e5;
                 border-bottom: 40px solid var(--white);
@@ -49,7 +49,7 @@
                 }
             }
 
-            // 🎯 Aktive Spalte bleibt in Standardfarbe
+            // Aktive Spalte bleibt in Standardfarbe
             &.active-col {
                 background-color: var(--neutral-light) !important;
 
@@ -72,17 +72,17 @@
 
     // Container für die Beschreibung
     .description-container {
-        width: 100%;
-        max-width: 1280px;
-        padding: 15px;
+        padding: 42px 42px 24px 42px;
         margin: 0;
         background: var(--neutral-light);
-        display: none; // Standardmäßig versteckt
+        display: none;
 
-        // Titel
+        @include m.respond-to(tablet) {
+            padding: 42px 42px 24px 42px;
+        }
+
         h3 {
-            min-height: 70px;
-            padding: 36px 0 12px;
+            padding: 0 0 24px;
             display: block;
         }
     }

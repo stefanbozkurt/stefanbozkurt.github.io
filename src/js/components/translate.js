@@ -1,11 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const languageSelector = document.getElementById('language-selector');
     
-    // 🌍 Sprachhandling
+    // Sprachhandling
     const currentUrl = new URL(window.location.href);
     const langParam = currentUrl.searchParams.get('lang') || 'de';  // Standard ist Deutsch
-
-    
 
     // Übersetzung des Inhalts
     async function translateContent(language) {
