@@ -118,9 +118,9 @@
         }
 
         .stefan {
-            width: 60%;
+            width: 100%;
             margin: 40px auto 0;
-            position: absolute;
+            position: relative;
 
             @include m.respond-to(tablet) {
                 width: 35%;
