@@ -1,106 +1,100 @@
 @use "../utils/mixins" as m;
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  background: var(--hero-bg);
+  color: var(--text-color);
+  overflow-x: hidden;
+
+  @include m.respond-to(tablet) {
+    font-size: 1.2rem;
   }
-  
-  body {
-    font-family: 'Roboto Mono', monospace;
-    font-size: 1rem;
-    background: var(--hero-bg);
-    color: var(--text-color);
-    overflow-x: hidden;
+
+  section {
+    --focus-color: var(--focus-color-light);
+    padding: 30px 0;
 
     @include m.respond-to(tablet) {
-      font-size: 1.2rem;
+      padding: 120px 0;
     }
 
-    section {
-      --focus-color: var(--focus-color-light);
-      padding: 30px 0;
+    .section-container {
+      width: 90%;
+      max-width: 1280px;
+      margin: 0 auto;
 
       @include m.respond-to(tablet) {
-        padding: 120px 0;
-      }
-
-      .section-container {
-        width: 90%;
-        max-width: 1280px;
-        margin: 0 auto;
-
-        @include m.respond-to(tablet) {
-          width: 80%;
-        }
+        width: 80%;
       }
     }
+  }
 
-    section.dark,
-    .navigation-bar.dark,
-    footer.dark {
-      --focus-color: var(--focus-color-dark);
-    }
+  section.dark,
+  .navigation-bar.dark,
+  footer.dark {
+    --focus-color: var(--focus-color-dark);
+  }
 
-    section.light {
-      --focus-color: var(--focus-color-light);
-    }
+  section.light {
+    --focus-color: var(--focus-color-light);
+  }
 
-    button:focus-visible,
-    a:focus-visible,
-    .comp-list:focus-visible {
-      outline: 2px dotted var(--focus-color);
-    }
+  button:focus-visible,
+  a:focus-visible,
+  .comp-list:focus-visible {
+    outline: 2px dotted var(--focus-color);
+  }
 
-    select:focus-visible {
-      outline: 2px dotted var(--focus-color);
-    }
-    
-
-  
-    a {
-      color: var(--hero-bg);
-      text-decoration: none;
-  
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-
-    
-   
-  
-    h1, h2, h3, h4, h5, h6 {
-      line-height: 2rem;
-      display: block;
-      width: 100%;
-    }
-  
-    h1 {
-      font-size: clamp(2.5rem, -0.875rem + 7.333vw, 6.75rem);
-      margin: 2.5rem 0 2rem 0;
-      padding: 0;
-      line-height: 120%;
-      display: inline-block;
-    }
-  
-    h2 {
-      margin: 0 0 1.2rem;
-      padding: 0;
-    }
-  
-    ul {
-      margin: 14px;
-      padding: 0;
-      list-style-type: square;
-  
-      li {
-        margin: 0 0 20px 0;
-      }
-    }
-  
-    .intro {
-      margin: 0 0 40px 0;
-    }
-    
+  select:focus-visible {
+    outline: 2px dotted var(--focus-color);
   }
   
+
+
+  a {
+    color: var(--hero-bg);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+
+  
+  
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 2rem;
+    display: block;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, -0.875rem + 7.333vw, 6.75rem);
+    margin: 2.5rem 0 2rem 0;
+    padding: 0;
+    line-height: 120%;
+    display: inline-block;
+  }
+
+  h2 {
+    margin: 0 0 1.2rem;
+    padding: 0;
+  }
+
+  ul {
+    margin: 14px;
+    padding: 0;
+    list-style-type: square;
+
+    li {
+      margin: 0 0 20px 0;
+    }
+  }  
+}
