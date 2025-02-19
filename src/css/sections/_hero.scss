@@ -77,7 +77,7 @@
                     height: 60px;
 
                     label {
-                        display: none;
+                        // display: none;
                         @include m.respond-to(tablet) {
                             display: inline-block;
                         }
