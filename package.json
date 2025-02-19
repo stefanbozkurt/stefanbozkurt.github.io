@@ -7,7 +7,9 @@
     "watch:scss": "sass --watch src/css/styles.scss:dist/css/styles.min.css --style compressed --no-source-map",
     "watch:html": "npx nodemon --watch src --ext html --exec \"npm run copy-html\"",
     "copy-html": "copyfiles -u 1 src/**/*.html src/index.html dist/",
-    "watch": "concurrently \"npm run watch:scss\" \"npm run watch:js\" \"npm run watch:html\"",
+    "copy-lang": "copyfiles -u 2 src/lang/en.json dist/lang/",
+    "watch:lang": "nodemon --watch src/lang --ext json --exec \"npm run copy-lang\"",
+    "watch": "concurrently \"npm run watch:scss\" \"npm run watch:js\" \"npm run watch:html\" \"npm run watch:lang\"",
     "serve": "http-server dist -p 8080"
   },
   "devDependencies": {
