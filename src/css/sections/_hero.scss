@@ -1,7 +1,6 @@
 @use "../utils/mixins" as m;
 
 .hero {
-    min-height: calc(100vh + 140px);
     background: var(--hero-bg);
     color: var(--neutral-light);
     padding-top: 70px;
