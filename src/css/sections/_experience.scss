@@ -24,7 +24,7 @@
     }
 
     .plus-minus {
-      top: auto;
+      top: 32px;
       @include m.respond-to(tablet) {
         top: auto;
       }

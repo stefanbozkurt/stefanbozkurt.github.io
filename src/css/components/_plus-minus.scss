@@ -1,16 +1,25 @@
+@use "../utils/mixins" as m;
+
 .plus-minus {
     position: absolute;
     top: 0;
     right: 0;
-    font-size: 30px;
+    font-size: 20px;
     cursor: pointer;
     text-align: center;
-    margin: 10px;
+    margin: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     background: var(--hero-bg);
     color: var(--neutral-light);
+
+    @include m.respond-to(tablet) {
+        font-size: 30px;
+        margin: 10px;
+        width: 32px;
+        height: 32px;
+    }
 }
