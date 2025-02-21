@@ -28,7 +28,6 @@ function toggleDescription() {
     columns.forEach(c => {
         c.classList.remove("active-col");
         c.querySelector(".plus-minus").textContent = "+";
-        c.querySelector(".description").style.display = "none"; // Mobile Descriptions verstecken
     });
 
     // Wenn vorher nicht aktiv, dann aktivieren
@@ -38,23 +37,13 @@ function toggleDescription() {
 
         const description = this.querySelector(".description");
 
-        if (window.innerWidth > 991) {
-            // 🖥️ Desktop: Description in descriptionContainer verschieben
-            descriptionContainer.innerHTML = ""; // Alte Description entfernen
-            const clonedDescription = description.cloneNode(true);
-            clonedDescription.style.display = "block"; // Sichtbar machen!
-            descriptionContainer.appendChild(clonedDescription);
-            descriptionContainer.style.display = "block"; // Container anzeigen
-        } else {
-            // 📱 Mobile: Description direkt unter der aktiven Spalte anzeigen
-            description.style.display = "block";
-            this.appendChild(description);
-            descriptionContainer.style.display = "none"; // Desktop-Container verstecken
-        }
+        // **Fix:** Immer die `.description-container` nutzen, unabhängig von der Bildschirmgröße
+        descriptionContainer.innerHTML = description.innerHTML;
+        descriptionContainer.style.display = "block";
     } else {
         // Wenn es schon aktiv war, schließen
         descriptionContainer.style.display = "none";
         descriptionContainer.innerHTML = "";
-        this.querySelector(".description").style.display = "none";
     }
 }
+    

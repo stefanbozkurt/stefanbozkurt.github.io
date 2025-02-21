@@ -9,11 +9,8 @@
 
     .col-33 {
         display: flex;
-        gap: 20px;
-
-        @include m.respond-to(tablet) {
-            gap: 2px;
-        }
+        gap: 2px;
+        flex-direction: row; // Sicherstellen, dass die Spalten immer nebeneinander bleiben
 
         .col {
             position: relative;
@@ -25,15 +22,22 @@
             cursor: pointer;
             font-size: 1rem;
             transition: background 0.3s ease-in-out;
+            width: 100%;
+            max-width: 33%; // Sicherstellen, dass sie gleichmäßig verteilt sind
+            text-align: center;
 
             // Teaser-Bild
             .teaser {
                 img {
-                    margin: 30px auto;
+                    margin: 30px auto 0;
                     max-width: 100%;
                     width: 200px;
                     height: auto;
                     opacity: 0.9;
+
+                    @include m.respond-to(tablet) {
+                        margin: 30px auto;
+                    }
                 }
             }
 
@@ -45,11 +49,7 @@
             // Inaktive Spalten farblich hervorheben
             &.comp-list:not(.active-col) {
                 background: #e5e5e5;
-                border-bottom: 40px solid var(--white);
-
-                @include m.respond-to(tablet) {
-                    border-bottom: 2px solid var(--white);
-                }
+                border-bottom: 2px solid var(--white);
             }
 
             // Aktive Spalte bleibt in Standardfarbe
@@ -79,6 +79,7 @@
         margin: 0;
         background: var(--neutral-light);
         display: none;
+        width: 100%;
 
         @include m.respond-to(tablet) {
             padding: 42px 42px 24px 42px;
@@ -90,20 +91,8 @@
         }
     }
 
-    // Mobile Ansicht - Beschreibung unter der jeweiligen Spalte
-    @include m.respond-to(mobile) {
-        .col-33 {
-            flex-direction: column;
-        }
-
-        .col {
-            width: 100%;
-
-            &.active-col {
-                .description {
-                    display: block;
-                }
-            }
-        }
+    // Entferne die mobile Ansicht-Anpassung, die die Spalten untereinander anordnete
+    .description {
+        display: none; // Kein direktes Anzeigen innerhalb der `.col`
     }
 }
