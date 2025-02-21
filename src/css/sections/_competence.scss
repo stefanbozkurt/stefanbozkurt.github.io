@@ -23,7 +23,7 @@
             font-size: 1rem;
             transition: background 0.3s ease-in-out;
             width: 100%;
-            max-width: 33%; // Sicherstellen, dass sie gleichmäßig verteilt sind
+            max-width: 33.33%; // Sicherstellen, dass sie gleichmäßig verteilt sind
             text-align: center;
 
             // Teaser-Bild
@@ -75,9 +75,9 @@
 
     // Container für die Beschreibung
     .description-container {
-        padding: 42px 42px 24px 42px;
-        margin: 0;
+        padding: 24px 12px 12px 12px;
         background: var(--neutral-light);
+        margin: 0;
         display: none;
         width: 100%;
 
@@ -86,8 +86,12 @@
         }
 
         h3 {
-            padding: 0 0 24px;
+            padding: 0px;
             display: block;
+
+            @include m.respond-to(tablet) {
+                padding: 0 0 24px;
+            }
         }
     }
 
