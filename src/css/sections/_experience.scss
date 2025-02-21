@@ -18,6 +18,7 @@
     align-items: center;
     padding: 24px 48px 24px 24px;
     transition: background-color 0.3s ease;
+    position: relative;
     &:hover {
       text-decoration: none;
       background: #dcdcdc;
