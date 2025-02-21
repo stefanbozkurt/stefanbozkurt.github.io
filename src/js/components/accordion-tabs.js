@@ -73,7 +73,8 @@ document.querySelectorAll('.projects-container').forEach(container => {
 
 // Plus-Minus-Icon Steuerung & `accordion-content-display` schließen
 document.querySelectorAll('.toggle-projects').forEach(toggle => {
-    toggle.addEventListener('click', function () {
+    toggle.addEventListener('click', function (event) {
+        event.preventDefault();
         const targetContainer = document.getElementById(this.getAttribute('data-target'));
         const plusMinusIcon = this.querySelector('.plus-minus');
         const accordionContentDisplay = targetContainer.querySelector('.accordion-content-display'); // Sucht den richtigen Display-Container

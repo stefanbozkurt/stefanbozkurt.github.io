@@ -1,7 +1,7 @@
 document.querySelectorAll('.toggle-projects').forEach(function(link) {
     link.addEventListener('click', function(event) {
         // Verhindern des Standard-Verhaltens des Links (z. B. scrollen)
-        // event.preventDefault();
+        event.preventDefault();
 
         // Ziel-Container aus dem 'data-target' Attribut holen
         const targetId = this.getAttribute('data-target');
