@@ -55,13 +55,23 @@
   .accordion-tabs-content {
     display: none;
     background: #f4f4f4;
+    padding: 12px 12px 0 12px;
 
     img {
       height: auto;
     }
+
+    h4 {
+      padding: 0 0 14px 0;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0 0 24px 0;
+    }
   }
 
-  /* Container für den Inhalt in der Desktop Ansicht */
+  /* Container für den Inhalt */
   .accordion-content-display {
     display: none;
     margin-top: 20px;
@@ -74,6 +84,7 @@
       width: auto;
       margin-right: 12px;
       background: #e5e5e5;
+      color: var(--neutral-dark);
       padding: 10px 15px;
       text-align: center;
       cursor: pointer;
@@ -111,7 +122,8 @@
         display: flex;
         flex-wrap: wrap;
         h4 {
-          margin: 24px 0 0 0;
+          margin: 24px 0 0 0!important;
+          font-size: 1.2rem;
         }
     }
 

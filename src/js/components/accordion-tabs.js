@@ -69,9 +69,6 @@ document.querySelectorAll('.projects-container').forEach(container => {
             }
         });
     });
-
-    // Event-Listener für Resize (nur einmal pro Container)
-    window.addEventListener('resize', updateAccordionDisplay);
 });
 
 // Plus-Minus-Icon Steuerung & `accordion-content-display` schließen
