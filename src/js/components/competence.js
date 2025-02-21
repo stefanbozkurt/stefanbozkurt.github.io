@@ -58,16 +58,3 @@ function toggleDescription() {
         this.querySelector(".description").style.display = "none";
     }
 }
-
-// Fenstergröße überwachen & Darstellung anpassen
-window.addEventListener("resize", function () {
-    if (window.innerWidth > 991) {
-        // Wechsel zu Desktop: Mobile Descriptions verstecken
-        document.querySelectorAll(".description").forEach(desc => desc.style.display = "none");
-        descriptionContainer.style.display = "none"; // Falls keine aktive Spalte
-    } else {
-        // Wechsel zu Mobile: Description-Container leeren & verstecken
-        descriptionContainer.style.display = "none";
-        descriptionContainer.innerHTML = "";
-    }
-});
