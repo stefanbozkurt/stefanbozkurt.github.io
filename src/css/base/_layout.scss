@@ -18,6 +18,7 @@ body {
   section {
     --focus-color: var(--focus-color-light);
     padding: 30px 0;
+    scroll-margin-top: 70px; /* Oder deine Navbar-Höhe */
 
     @include m.respond-to(tablet) {
       padding: 120px 0;
