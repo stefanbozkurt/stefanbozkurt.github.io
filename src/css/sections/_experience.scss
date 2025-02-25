@@ -38,6 +38,10 @@
 
     .projects-intro {
       padding: 24px 0;
+
+      a {
+        text-decoration: underline;
+      }
     }
   }
   
@@ -153,8 +157,6 @@
 
   /* Desktop Ansicht (ab 768px) */
   @media (min-width: 768px) {
- 
-
     .accordion-tabs-content {
         display: none; /* Alle Inhalte sind standardmäßig unsichtbar auf Desktop */
     }
