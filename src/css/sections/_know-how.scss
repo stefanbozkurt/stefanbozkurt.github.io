@@ -39,6 +39,10 @@
                     min-height: unset;
                 }
 
+                @include m.respond-to(tablet) {
+                    font-size: 1.2rem;
+                }
+
                 h3 {
                     font-size: 1.2rem;
                     margin: 0;
