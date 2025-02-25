@@ -17,7 +17,7 @@
 
         .timeline {
             width: 50%;
-            margin: 0 0 20px 20px;
+            margin: 0 0 12px 20px;
             float: right;
 
             &-content {
@@ -74,7 +74,7 @@
 
             &:nth-child(even) {
                 float: left;
-                margin: 0 20px 20px 0;
+                margin: 0 20px 12px 0;
             }
 
             // Wenn die Spalte geöffnet ist, den Hintergrund der Timeline ändern
@@ -91,7 +91,7 @@
 
                 &:nth-child(even) {
                     float: right;
-                    margin: 0 0 20px 20px;
+                    margin: 0 0 12px 20px;
                     .timeline-content {
                         padding: 30px 24px 30px 80px;
                         @include m.respond-to(small-phone) {
